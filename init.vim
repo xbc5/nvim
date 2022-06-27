@@ -1,8 +1,9 @@
 lua << EOF
--- FIXME: check theme exists first, make sure it doesn't throw
-require("plugins") -- base uses things loaded by plugins
+-- these requires won't throw if plug-ins don't exist
 require("config.theme")("material", "deep ocean")
-require'config.nvim-lsp-installer'.config()
+require("config.nvim-lsp-installer").config()
+-- this one might throw
+require("plugins") -- base uses things loaded by plugins
 EOF
 
 " nvim-treesitter-context: display scope declaration at top of screen

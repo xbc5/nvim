@@ -1,5 +1,10 @@
 return function(colorscheme, style)
+  local try_require = require("lib.nvim").try_require
+  local material = try_require("material")
+  if not material then return end -- material won't exist on first load (initial installation)
+
   -- NOTE: you must set the lualine theme in the config.lualine module.
+
 
   local function set_material()
     -- styles: darker; lighter; oceanic; palenight; deep ocean;

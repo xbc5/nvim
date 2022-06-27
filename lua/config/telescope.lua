@@ -52,7 +52,8 @@ return function()
         override_file_sorter = true,
         case_mode = "smart_case",        -- smart_case|ignore_case|respect_case
       },
-      project = { -- project.nvim
+      -- FIXME: annoying popups when dirs don't exist #29
+      --[[ project = { -- project.nvim
         base_dirs = {
           "~/projects",
           "~/practice",
@@ -61,7 +62,7 @@ return function()
           -- {'~/dev/src3', max_depth = 4}, -- e.g.
         },
         hidden_files = true,
-      }
+      } ]]
     }
   }
 

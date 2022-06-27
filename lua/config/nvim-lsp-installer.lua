@@ -26,7 +26,9 @@ end
 -- You can also use the LspInstallPreferred command to install the listed servers above
 -- if they're not already installed.
 function M.config()
-  local lsp_installer = require("nvim-lsp-installer")
+  local try_require = require("lib.nvim").try_require
+  local lsp_installer = try_require("nvim-lsp-installer")
+  if not lsp_installer then return end -- on first load, plug-in won't exist unti installed
 
   vim.cmd('command! LspInstallPreferred lua require("config.nvim-lsp-installer").install()')
   vim.cmd('command! LspReload LspRestart | edit)') -- reload LSP then buffer
