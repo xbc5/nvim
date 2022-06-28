@@ -208,5 +208,5 @@ return require('packer').startup({function(use)
     }
   end,
 
-  config = require("config.packer")
+  config = require("config.packer").config()
 })
