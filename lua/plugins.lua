@@ -39,6 +39,16 @@ return require('packer').startup({function(use)
     use 'lewis6991/nvim-treesitter-context'
 
     use {
+      'pwntester/octo.nvim',
+      requires = {
+        'nvim-lua/plenary.nvim',
+        'nvim-telescope/telescope.nvim',
+        'kyazdani42/nvim-web-devicons',
+      },
+      config = require"config.octo".config
+    }
+
+    use {
       'nvim-treesitter/playground',
       requires = 'nvim-treesitter/nvim-treesitter',
       cmd = "TSPlaygroundToggle",
