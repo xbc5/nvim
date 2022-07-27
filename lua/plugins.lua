@@ -88,10 +88,13 @@ return require('packer').startup({function(use)
     }
 
     use {
-      'williamboman/nvim-lsp-installer',
-      requires = { "neovim/nvim-lspconfig" },
+      "williamboman/mason.nvim",
+      requires = {
+      "williamboman/mason-lspconfig.nvim",
+        "neovim/nvim-lspconfig"
+      },
+      config = require("config.mason").config
     }
-
 
     use {
       "mfussenegger/nvim-ts-hint-textobject",

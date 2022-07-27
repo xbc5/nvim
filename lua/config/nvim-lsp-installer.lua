@@ -27,17 +27,17 @@ end
 -- if they're not already installed.
 function M.config()
   local try_require = require("lib.nvim").try_require
-  local lsp_installer = try_require("nvim-lsp-installer")
+  -- local lsp_installer = try_require("nvim-lsp-installer")
   if not lsp_installer then return end -- on first load, plug-in won't exist unti installed
 
-  vim.cmd('command! LspInstallPreferred lua require("config.nvim-lsp-installer").install()')
-  vim.cmd('command! LspReload LspRestart | edit)') -- reload LSP then buffer
+  -- vim.cmd('command! LspInstallPreferred lua require("config.nvim-lsp-installer").install()')
+  -- vim.cmd('command! LspReload LspRestart | edit)') -- reload LSP then buffer
 
-  vim.lsp.set_log_level('warn')
+  -- vim.lsp.set_log_level('warn')
 
-  lsp_installer.settings{
-    log_level = vim.log.levels.WARN,
-  }
+  --[[ lsp_installer.settings{
+    log_level = vim.log.levels.WARN, ]]
+  -- }
 
   lsp_installer.on_server_ready(function(server)
       local nvim = require'lib.nvim'
