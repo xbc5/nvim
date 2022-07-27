@@ -13,7 +13,7 @@ function M.get_conf_for(name)
   local conf = nvim.try_require(path)
   if conf then
     if not conf.config then
-      error("nvim-lsp-installer: cannot find config() function in lsp config module: "..path)
+      error("mason: cannot find config() function in lsp config module: "..path)
     else
       opts = table.merge(opts, conf.config())
     end
