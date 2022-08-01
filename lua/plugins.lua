@@ -168,6 +168,7 @@ return require('packer').startup({function(use)
         {'kyazdani42/nvim-web-devicons'},
         {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
         {'nvim-telescope/telescope-project.nvim'},
+        {'nvim-telescope/telescope-ui-select.nvim'},
       },
       config = require("config.telescope"),
     }

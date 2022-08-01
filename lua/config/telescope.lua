@@ -68,6 +68,7 @@ return function()
 
 
   telescope.load_extension('fzf') -- MUST call AFTER setup
+  telescope.load_extension('ui-select')
 
 
   -- project.nvim
