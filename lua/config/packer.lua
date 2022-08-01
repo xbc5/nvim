@@ -6,10 +6,25 @@ function M.config()
 
   local snapshot_name = "packer-snapshot.json"
 
+  local function pin_when_done()
+    vim.api.nvim_exec(
+      "autocmd User PackerComplete ++once lua require('packer').snapshot('"..snapshot_name.."')",
+    true)
+  end
+
   vim.api.nvim_create_user_command("PackerSyncAndPin", function()
-    packer.sync() -- compiles after sync, see option below
-    packer.snapshot(snapshot_name)
+    pin_when_done()
+    packer.sync()
   end, { desc = "Run PackerSync but save pins to the configured directory." })
+
+  vim.api.nvim_create_user_command("PackerPin", function()
+    packer.snapshot(snapshot_name)
+  end, { desc = "Run PackerSnapshot but save pins to the configured directory." })
+
+  vim.api.nvim_create_user_command("PackerInstallAndPin", function()
+    pin_when_done()
+    packer.install()
+  end, { desc = "Run PackerInstall but save pins to the configured directory." })
 
   return {
     snapshot_path = vim.fn.stdpath("config"), -- is my repo
