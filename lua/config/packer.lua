@@ -1,5 +1,20 @@
 local M = {}
 
+function M.install()
+  local sys = require("lib.sys")
+  if not sys.is_user() or sys.is_templatevm() then return end
+
+  local execute = vim.api.nvim_command
+  local fn = vim.fn
+
+  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+
+  if fn.empty(fn.glob(install_path)) > 0 then
+    fn.system({'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path})
+    execute 'packadd packer.nvim'
+  end
+end
+
 function M.config()
   local packer = require("packer")
 

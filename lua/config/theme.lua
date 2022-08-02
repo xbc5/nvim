@@ -3,7 +3,7 @@ return function(colorscheme, style)
   local material = try_require("material")
   if not material then return end -- material won't exist on first load (initial installation)
 
-  -- NOTE: you must set the lualine theme in the config.lualine module.
+  -- NOTE: you must set the lualine theme in the config.plugins.lualine module.
 
 
   local function set_material()
