@@ -21,7 +21,7 @@ return require('packer').startup({function(use)
     local path = vim.fn.stdpath('config') .. '/lua/config/plugins'
     local names = require("lib.sys").ls(path)
     for _, name in ipairs(names) do
-      local conf = require("config.plugins."..name:match("(.+)%..+$")) -- strip .lua extension too
+      local conf = require("config.plugins."..name:match("(.+)%.lua$")) -- strip .lua extension too
       if type(conf) ~= "table" then
         error(name..": config module must return a table with a setup() function.")
       end
