@@ -1,33 +1,12 @@
 local M = {}
 
-function M.get_conf_for(name)
-  local nvim = require'lib.nvim'
-  local table = require'lib.table'
-
-  local opts = { -- default opts, merged with server configs
-    flags = { debounce_text_changes = 500 } -- debounce didChange notification to server (ms)
-  }
-
-  -- the server config might not exists
-  local path = 'config.lsp_servers.'..name
-  local conf = nvim.try_require(path)
-  if conf then
-    if not conf.config then
-      error("mason: cannot find config() function in lsp config module: "..path)
-    else
-      opts = table.merge(opts, conf.config())
-    end
-  end
-
-  return opts
-end
-
 function M.setup(use)
   use {
     "williamboman/mason.nvim",
     requires = {
       "williamboman/mason-lspconfig.nvim",
-      "neovim/nvim-lspconfig"
+      "neovim/nvim-lspconfig",
+      "RRethy/vim-illuminate", -- highlight other identical words in buffer on hover
     },
     config = function()
       vim.cmd('command! LspReload LspRestart | edit)') -- reload LSP then buffer
@@ -68,25 +47,38 @@ function M.setup(use)
           }
         }
 
-        local get_conf_for = require("config.plugins.mason").get_conf_for
         local lspconfig = try_require("lspconfig")
 
         if not lspconfig then
           error("lspconfig not loaded: you must load lspconfig before mason")
         end
 
+        local function on_attach(client)
+          require('illuminate').on_attach(client)
+        end
+
         mason_lsp.setup_handlers {
           function (server_name) -- default handler; executes if no specific config below
-            lspconfig[server_name].setup(get_conf_for(server_name))
+            lspconfig[server_name].setup({
+              on_attach = on_attach
+            })
           end,
 
-          -- You can be specific like so:
-          -- ["rust_analyzer"] = function ()
-            --   require("rust-tools").setup {}
-            -- end
-          }
-        end
+          ["sumneko_lua"] = function()
+            lspconfig.sumneko_lua.setup({
+              on_attach = on_attach,
+              settings = {
+                Lua = {
+                  diagnostics = {
+                    globals = {'vim'},
+                  },
+                },
+              },
+            })
+          end
+        }
       end
+    end
     }
 end
 
