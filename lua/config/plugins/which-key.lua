@@ -60,6 +60,10 @@ function M.setup(use)
       name = "view",
       n = "notifications",
     },
+    z = {
+      name = "fold",
+      i = { name = "foldenable toggle" }
+    }
   })
 end
 
