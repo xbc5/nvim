@@ -14,8 +14,8 @@ function M.setup(use)
       b = { name = "buffer" },
       g = { name = "git" },
       h = { name = "help" },
-      w = { name = "workspace" },
       t = { name = "TODOs" },
+      w = { name = "workspace" },
     },
     ["<leader>b"] = {
       name = "buffer",
@@ -56,6 +56,10 @@ function M.setup(use)
     ["<leader>n"] = { name = "find files" },
     ["<leader>p"] = { name = "Packer" },
     ["<leader>s"] = { name = "set opt" },
+    ["<leader>v"] = {
+      name = "view",
+      n = "notifications",
+    },
   })
 end
 

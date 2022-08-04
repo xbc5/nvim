@@ -48,8 +48,7 @@ function M.setup(use)
           local try_require = require("lib.nvim").try_require
           local secrets = try_require('config.secrets.github').notifications
           if not secrets then
-            -- TODO: use proper notification and issue warning #47
-            print("You must supply GitHub secrets to get notifications.")
+            vim.notify("You must supply GitHub secrets to get notifications.", "warn")
             return
           end
           require('github-notifications').setup {
