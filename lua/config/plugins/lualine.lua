@@ -2,7 +2,7 @@ local M = {}
 
 function M.setup(use)
   use {
-    'hoob3rt/lualine.nvim',
+    'nvim-lualine/lualine.nvim',
     requires = {'kyazdani42/nvim-web-devicons'},
     config = function()
       local colorscheme = vim.g.colors_name
@@ -13,11 +13,16 @@ function M.setup(use)
         neon = "neon",
       }
 
-      require('lualine').setup {
+      require('lualine').setup({
         options = {
           theme = themes[colorscheme] or colorscheme -- lualine defaults to gruvbox if none is found.
-        }
-      }
+        },
+        sections = {
+          lualine_b = {
+            'branch', require('github-notifications').statusline_notification_count
+          },
+        },
+      })
     end
   }
 end

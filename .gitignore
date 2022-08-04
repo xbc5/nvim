@@ -1,5 +1,6 @@
 plugin/
 spell/
+secrets
 # Created by https://www.toptal.com/developers/gitignore/api/linux,vim
 # Edit at https://www.toptal.com/developers/gitignore?templates=linux,vim
 

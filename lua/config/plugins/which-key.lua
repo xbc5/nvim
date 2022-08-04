@@ -37,6 +37,7 @@ function M.setup(use)
     ["<leader>g"] = {
       name = "git",
       g = "lazy git",
+      n = "notifications (GitHub)",
     },
     ["<leader>J"] = { name = "[dap] continue" },
     ["<leader>j"] = { name = "[dap] step over" },
