@@ -21,7 +21,7 @@ function M.setup(use)
       local map = vim.api.nvim_set_keymap
       local opts = { silent = true, noremap = true }
 
-      map('n', '<leader>tl', '<CMD>TodoTelescope<CR>', opts)
+      map('n', '<leader>ft', '<CMD>TodoTelescope<CR>', opts)
     end
   }
 end

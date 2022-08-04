@@ -153,12 +153,3 @@ inoremap ? ?<C-g>u
 " if the jump is greater than 5 lines, add it to the jump history (m')
 nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
 nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
-
-
-"  +-------------------------------------------------+
-"  |                      TROUBLE                    |
-"  +-------------------------------------------------+
-"
-nnoremap <leader>xx <cmd>TroubleToggle<cr>
-nnoremap <leader>xw <cmd>Trouble lsp_workspace_diagnostics<cr>
-nnoremap <leader>xd <cmd>Trouble lsp_document_diagnostics<cr>

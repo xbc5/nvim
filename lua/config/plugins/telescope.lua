@@ -4,22 +4,21 @@ function M.my_keymaps(actions_wanted)
   local with_actions = {
     { "n", "<leader>m", "buffers" },
     -- often used
-    { "n", "<leader>fgg", "live_grep" },
-    { "n", "<leader>fcb", "current_buffer_fuzzy_find" },
     { "n", "<leader>fhh", "help_tags" },
-    -- not so often used
     { "n", "<leader>fkk", "keymaps" },
-    { "n", "<leader>fgs", "git_status" },
+    -- git
     { "n", "<leader>fgc", "git_commits" },
-    { "n", "<leader>fts", "treesitter" },
-    { "n", "<leader>ffb", "file_browser" },
-    { "n", "<leader>fbs", "lsp_document_symbols" },
-    { "n", "<leader>fbr", "lsp_references" },
-    { "n", "<leader>fwd", "lsp_workspace_diagnostics" },
+    { "n", "<leader>fgs", "git_status" },
+    -- buffer
     { "n", "<leader>fbd", "lsp_document_diagnostics" },
-    { "n", "<leader>fws", "lsp_workspace_symbols" },
-    { "n", "<leader>fii", "lsp_implementations" },
+    { "n", "<leader>fbf", "current_buffer_fuzzy_find" },
+    { "n", "<leader>fbr", "lsp_references" },
+    { "n", "<leader>fbs", "lsp_document_symbols" },
+    -- workspace
+    { "n", "<leader>fwd", "lsp_workspace_diagnostics" },
+    { "n", "<leader>fwg", "live_grep" },
     { "n", "<leader>fwr", "lsp_references" },
+    { "n", "<leader>fws", "lsp_workspace_symbols" },
   }
 
   if actions_wanted then return with_actions end
