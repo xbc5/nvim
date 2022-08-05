@@ -11,7 +11,7 @@ function M.setup(use)
     config = function()
       vim.o.foldcolumn = '1'
       vim.o.foldlevel = 99 -- UFO insists that this is necessary -- don't change!
-      vim.o.foldlevelstart = 0 -- this sets starting foldlevel, change this instead
+      vim.o.foldlevelstart = 99 -- folds will auto-close if this is set to 0, use autocmd instead
       vim.o.foldenable = true
 
       -- you need to remap these
