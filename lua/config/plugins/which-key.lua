@@ -49,6 +49,7 @@ function M.setup(use)
       p = "pr",
       s = "search (global issues)"
     },
+    ["<leader>r"] = { name = "run" },
     ["<leader>h"] = { name = "[dap] step out" },
     ["<leader>u"] = { name = "[dap] up" },
     ["<leader>k"] = { name = "[dap] step back" },
