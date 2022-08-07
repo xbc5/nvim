@@ -33,16 +33,12 @@ function M.setup(use)
       r = "REPL toggle",
       x = "close",
     },
-    ["<leader>d"] = { name = "[dap] down" },
     ["<leader>g"] = {
       name = "git",
       g = "lazy git",
       n = "notifications (GitHub)",
     },
-    ["<leader>J"] = { name = "[dap] continue" },
-    ["<leader>j"] = { name = "[dap] step over" },
-    ["<leader>K"] = { name = "[dap] reverse continue" },
-    ["<leader>l"] = { name = "[dap] step into" },
+    ["<leader>l"] = { name = "LSP" },
     ["<leader>o"] = {
       name = "Octo",
       i = "issue",
@@ -50,9 +46,6 @@ function M.setup(use)
       s = "search (global issues)"
     },
     ["<leader>r"] = { name = "run" },
-    ["<leader>h"] = { name = "[dap] step out" },
-    ["<leader>u"] = { name = "[dap] up" },
-    ["<leader>k"] = { name = "[dap] step back" },
     ["<leader>m"] = { name = "buffers" },
     ["<leader>n"] = { name = "find files" },
     ["<leader>p"] = { name = "Packer" },

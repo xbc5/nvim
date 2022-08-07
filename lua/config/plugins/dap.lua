@@ -80,14 +80,15 @@ function M.setup(use)
       map('n', '<leader>ex', '<Cmd>lua require("dap").close()<CR>', opts)
       map('n', '<leader>ep', '<Cmd>lua require("dap").pause()<CR>', opts) -- can take thread ID
 
-      map('n', '<leader>J', '<Cmd>lua require("dap").continue()<CR>', opts) -- also starts session
-      map('n', '<leader>K', '<Cmd>lua require("dap").reverse_continue()<CR>', opts) -- back in time
-      map('n', '<leader>k', '<Cmd>lua require("dap").step_back()<CR>', opts) -- back 1 step
-      map('n', '<leader>j', '<Cmd>lua require("dap").step_over()<CR>', opts)
-      map('n', '<leader>h', '<Cmd>lua require("dap").step_out()<CR>', opts) -- out func
-      map('n', '<leader>l', '<Cmd>lua require("dap").step_into()<CR>', opts) -- in func
-      map('n', '<leader>u', '<Cmd>lua require("dap").up()<CR>', opts) -- up stack, no stepping
-      map('n', '<leader>d', '<Cmd>lua require("dap").down()<CR>', opts) -- down stack, not stepping
+      -- navigation
+      map('n', '<M-J>', '<Cmd>lua require("dap").continue()<CR>', opts) -- also starts session
+      map('n', '<M-K>', '<Cmd>lua require("dap").reverse_continue()<CR>', opts) -- back in time
+      map('n', '<M-k>', '<Cmd>lua require("dap").step_back()<CR>', opts) -- back 1 step
+      map('n', '<M-j>', '<Cmd>lua require("dap").step_over()<CR>', opts)
+      map('n', '<M-h>', '<Cmd>lua require("dap").step_out()<CR>', opts) -- out func
+      map('n', '<M-l>', '<Cmd>lua require("dap").step_into()<CR>', opts) -- in func
+      map('n', '<M-u>', '<Cmd>lua require("dap").up()<CR>', opts) -- up stack, no stepping
+      map('n', '<M-d>', '<Cmd>lua require("dap").down()<CR>', opts) -- down stack, not stepping
 
       map('n', '<leader>eb', '<Cmd>lua require("dap").toggle_breakpoint()<CR>', opts)
       map('n', '<leader>eB', '<Cmd>lua require("dap").clear_breakpoints()<CR>', opts)
