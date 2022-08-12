@@ -20,7 +20,7 @@ function M.jest(...)
     -- WARN: unpack() is deprecated; use table.unpack() when this blows up.
     runtimeArgs = {'--inspect-brk', './node_modules/.bin/jest', '--no-coverage', '--no-cache', unpack(rest, 1, #rest)},
     args = { path },
-    sourceMaps = 'inline',
+    sourceMaps = false,
     protocol = 'inspector',
     skipFiles = {'<node_internals>/**/*.js'},
     console = 'integratedTerminal',
@@ -46,7 +46,7 @@ function M.setup(use)
       dap.adapters.node2 = {
         type = 'executable',
         command = 'node',
-        args = {os.getenv('HOME') .. '/git/vscode-node-debug2/out/src/nodeDebug.js'},
+        args = {vim.fn.stdpath('data') .. '/mason/packages/node-debug2-adapter/out/src/nodeDebug.js'},
       }
 
       dap.configurations.javascript = {
@@ -96,8 +96,7 @@ function M.setup(use)
       map('n', '<leader>er', '<Cmd>lua require("dap").repl.toggle()<CR>', opts)
 
       vim.cmd('command! -nargs=* JestDebug :lua require("config.plugins.dap").jest(<f-args>)')
-
-    end 
+    end
     }
 end
 
