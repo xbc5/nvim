@@ -10,80 +10,76 @@ function M.setup(use)
   use 'lewis6991/nvim-treesitter-context'
 
   use {
+    "mfussenegger/nvim-ts-hint-textobject",
+    requires = { "nvim-treesitter/nvim-treesitter" },
+    after = "nvim-treesitter",
+  }
+
+  use {
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    requires = { "nvim-treesitter/nvim-treesitter" },
+    after = "nvim-treesitter",
+  }
+
+  use {
     'nvim-treesitter/nvim-treesitter',
     config = function()
       require("nvim-treesitter.configs").setup {
         ensure_installed = {
-          -- can be a string with: 'all' or a list
-          -- available parsers that interest you: bash lua bibtex c cmake css dockerfile html jsonc (i.e. with comments)
-          -- latex regex rust python svelte toml typescript vue yaml scss rst graphql go gomod cpp
-          -- NOTE: ensure json and html deps are installed for rest-nvim
           "bash", "lua", "css", "dockerfile", "html", "javascript", "json", "jsonc", "regex",
           "rust", "python", "svelte", "toml", "typescript", "yaml", "scss", "rst", "query"
-        },
-        ignore_install = { }, -- ignore these parsers
-
-        indent = { -- experimental, unstable
-          enable = false
-        },
-        incremental_selection = {
-          enable = true,
-          keymaps = {
-            init_selection = "gnn",
-            node_incremental = "grn",
-            scope_incremental = "grc",
-            node_decremental = "grm",
-          },
         },
         -- nvim-treesitter-textobjects
         textobjects = {
           select = {
-            enable = true,
-
-            -- Automatically jump forward to textobj, similar to targets.vim
-            lookahead = true,
-
+            enable = true, -- WARN: all modules disabled by default
+            include_surrounding_whitespace = true,
             keymaps = {
-              -- You can use the capture groups defined in textobjects.scm
-              -- block, call, class, comment, conditional, frame, function
-              --  loop parameter and scopename -- all in the form: @foo.inner|outer.
+              -- capture groups defined in ~/.local/.../packer/nvim-treesitter/captures/*
+              -- see :h nvim-treesitter-incremental-selection-mod
+              ["aa"] = "@parameter.outer", -- a: "arg" (p is paragraph)
+              -- ["ia"] = "@parameter.inner", -- doesn't work so well
               ["af"] = "@function.outer",
               ["if"] = "@function.inner",
               ["ac"] = "@class.outer",
               ["ic"] = "@class.inner",
+              ["aC"] = "@comment.outer",
+              ["iC"] = "@comment.inner", -- doesn't work
               ["ab"] = "@block.outer",
               ["ib"] = "@block.inner",
+              ["al"] = "@loop.outer",
+              ["il"] = "@loop.inner",
             },
           },
           move = {
-            -- navigate; jump to start/end of functions/classes
             enable = true,
-            set_jumps = true, -- whether to set jumps in the jumplist
+            set_jumps = true, -- true: add to jump list
             goto_next_start = {
-              ["]m"] = "@function.outer",
-              ["]]"] = "@class.outer",
+              ["]f"] = "@function.outer",
+              ["]x"] = "@class.outer",
             },
             goto_next_end = {
-              ["]M"] = "@function.outer",
-              ["]["] = "@class.outer",
+              ["]F"] = "@function.outer",
+              ["]X"] = "@class.outer",
             },
             goto_previous_start = {
-              ["[m"] = "@function.outer",
-              ["[["] = "@class.outer",
+              ["[f"] = "@function.outer",
+              ["[x"] = "@class.outer",
             },
             goto_previous_end = {
-              ["[M"] = "@function.outer",
-              ["[]"] = "@class.outer",
+              ["[F"] = "@function.outer",
+              ["[X"] = "@class.outer",
             },
           },
           swap = {
-            -- swap function parameters
             enable = true,
             swap_next = {
-              ["<leader>a"] = "@parameter.inner",
+              ["<M-l>"] = "@parameter.inner",
+              ["<M-j>"] = "@function.outer",
             },
             swap_previous = {
-              ["<leader>A"] = "@parameter.inner",
+              ["<M-h>"] = "@parameter.inner",
+              ["<M-k>"] = "@function.outer",
             },
           },
         },

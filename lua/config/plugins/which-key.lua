@@ -8,7 +8,37 @@ function M.setup(use)
     end
   }
 
+  local ts = {
+    a = "arg",
+    b = "block (code)",
+    c = "class",
+    C = "comment",
+    f = "function",
+    l = "loop",
+  }
+
+  local ts_move = {
+    f = "function start",
+    F = "function end",
+    x = "class start",
+    X = "class end",
+  }
+
   require("which-key").register({
+    ["d"] = {
+      a = ts,
+      i = ts,
+    },
+    ["v"] = {
+      a = ts,
+      i = ts,
+    },
+    ["y"] = {
+      a = ts,
+      i = ts,
+    },
+    ["]"] = ts_move,
+    ["["] = ts_move,
     ["<leader>f"] = {
       name = "fuzzy",
       b = { name = "buffer" },
