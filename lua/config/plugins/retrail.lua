@@ -9,7 +9,7 @@ function M.setup(use)
           strict = true, -- true: enabled for included; false: disable on excluded
           include = {
             -- don't enable js, ts -- they have formatters
-            "rust", "python", "html", "dockerfile", "lua", "vim", "sh"
+            "rust", "python", "html", "dockerfile", "lua", "vim", "sh", "go"
           },
         },
         trim = { blanklines = true }
