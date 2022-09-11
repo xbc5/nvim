@@ -114,7 +114,7 @@ function M.setup(use)
       telescope.load_extension('project') -- project.nvim: fuzzy finder for projects
       vim.api.nvim_set_keymap(
         'n',
-        '<leader>fpp',
+        '<leader>fp',
         ":lua require'telescope'.extensions.project.project{ display_type = 'full' }<CR>",
         {noremap = true, silent = true}
       )
