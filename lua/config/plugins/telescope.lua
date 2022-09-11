@@ -90,7 +90,11 @@ function M.setup(use)
               ["practice"] = "~/projects",
               ["git"] = "~/git",
             }
-          }
+          },
+          project = {
+            base_dirs = { "~/projects" },
+            hidden_files = true,
+          },
         }
       }
 

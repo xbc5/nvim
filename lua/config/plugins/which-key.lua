@@ -44,6 +44,7 @@ function M.setup(use)
       b = { name = "buffer" },
       g = { name = "git" },
       h = { name = "help" },
+      p = { name = "projects" },
       t = { name = "TODOs" },
       w = { name = "workspace" },
     },
