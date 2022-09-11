@@ -17,6 +17,9 @@ nnoremap <silent> <leader>sl :set list!<CR>
 nnoremap <silent> <leader>ss :set spell!<CR>
 nnoremap <silent> <leader>sw :set wrap!<CR>
 
+nmap <A-s> :w<CR>
+imap <A-s> <Esc>:w<CR>i
+
 augroup vimrc_help
   autocmd!
   autocmd BufEnter *.txt if &buftype == 'help' | wincmd L | endif
@@ -138,7 +141,7 @@ nnoremap <leader>pc <cmd>PackerCompile<cr>
 "
 " yank to end of line
 nnoremap Y y$
-" centre screen while navigating searches etc: zz:centre; zv:open folds;  
+" centre screen while navigating searches etc: zz:centre; zv:open folds;
 nnoremap n nzzzv
 nnoremap N Nzzzv
 " keep cursor in same place while joining lines: mz:mark z; J; `z: jump to z;
