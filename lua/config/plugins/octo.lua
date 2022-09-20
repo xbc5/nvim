@@ -14,6 +14,8 @@ function M.setup(use)
 
       -- these are to initiate Octo outside of an Octo buffer
       map('n', '<leader>oil', '<CMD>Octo issue list<CR>', opts)
+      map('n', '<leader>oic', '<CMD>Octo issue create<CR>', opts)
+      map('n', '<leader>ois', '<CMD>Octo issue search<CR>', opts)
       map('n', '<leader>opl', '<CMD>Octo pr list<CR>', opts)
       map('n', '<leader>opc', '<CMD>Octo pr create<CR>', opts)
       map('n', '<leader>opr', '<CMD>Octo pr checks<CR>', opts)
