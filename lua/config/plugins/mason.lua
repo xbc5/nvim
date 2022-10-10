@@ -28,6 +28,7 @@ function M.setup(use)
             "tsserver",
             "cssls",
             "emmet_ls",
+            "eslint",
             "tailwindcss",
             "jsonls",
             -- devops
