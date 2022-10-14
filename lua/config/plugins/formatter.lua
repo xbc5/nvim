@@ -8,19 +8,21 @@ Each formatter should return a table that consiste of:
   tempfile_prefix: prefix for temp file when not using stdin (optional)
   tempfile_postfix: postfix for temp file when not using stdin (optional)
 ]]--
+
+--[[
+TODO: if local config isn't found, don't load formatter
+you don't want to auto-format a code-base that isn't yours.
+--]]
 local M = {}
 
 function M.setup(use)
   use {
     'mhartington/formatter.nvim',
     config = function()
-      -- NOTE: don't forget to update this when adding new formatters.
-      -- TODO: if local config isn't found, don't load formatter
-      -- you don't want to auto-format a code-base that isn't yours.
       vim.api.nvim_exec([[
         augroup FormatAutogroup
         autocmd!
-        autocmd BufWritePost *.js,*.ts,*.html FormatWrite
+        autocmd BufWritePost *.js,*.ts,*.html,*.scss,*.css,*.md,*.less,*.json,*.yml,*.yaml FormatWrite
         augroup END
       ]], true)
 
@@ -29,8 +31,10 @@ function M.setup(use)
         filetype = {}
       }
 
-      -- initialise prettierd
-      for _, t in pairs({"html", "javascript", "typescript"}) do
+      -- WARN: don't forget to update autocommand when adding new formatters.
+      local forPrettier = {"html", "javascript", "typescript", "yaml",
+                           "scss", "markdown", "less", "css", "json"}
+      for _, t in pairs(forPrettier) do
         config.filetype[t] = {
           function()
             return {
