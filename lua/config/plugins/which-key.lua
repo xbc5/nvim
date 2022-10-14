@@ -51,6 +51,8 @@ function M.setup(use)
     ["<leader>b"] = {
       name = "buffer",
       k = "kill",
+      d = "delete",
+      o = "only",
     },
     ["<leader>e"] = {
       name = "DAP",

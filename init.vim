@@ -17,6 +17,10 @@ nnoremap <silent> <leader>sl :set list!<CR>
 nnoremap <silent> <leader>ss :set spell!<CR>
 nnoremap <silent> <leader>sw :set wrap!<CR>
 
+" "buffer only": delete all other buffers
+" delete all => edit last => delete last [no name] (empty buffer)
+nnoremap <leader>bo :%bd\|e#\|bd#<CR>
+
 nmap <A-s> :w<CR>
 imap <A-s> <Esc>:w<CR>i
 
