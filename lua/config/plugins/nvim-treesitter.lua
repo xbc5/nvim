@@ -27,7 +27,7 @@ function M.setup(use)
       require("nvim-treesitter.configs").setup {
         ensure_installed = {
           "bash", "lua", "css", "dockerfile", "html", "javascript", "json", "jsonc", "regex",
-          "rust", "python", "svelte", "toml", "typescript", "yaml", "scss", "rst", "query"
+          "rust", "python", "svelte", "toml", "typescript", "yaml", "scss", "rst", "query", "vim",
         },
         -- nvim-treesitter-textobjects
         textobjects = {
