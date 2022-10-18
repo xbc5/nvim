@@ -7,8 +7,6 @@ function M.setup(use)
     cmd = "TSPlaygroundToggle",
   }
 
-  use 'lewis6991/nvim-treesitter-context'
-
   use {
     "mfussenegger/nvim-ts-hint-textobject",
     requires = { "nvim-treesitter/nvim-treesitter" },
