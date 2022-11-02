@@ -41,8 +41,6 @@ function M.setup(use)
       {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'},
       {'nvim-telescope/telescope-project.nvim'},
       {'nvim-telescope/telescope-ui-select.nvim' },
-      {'nvim-telescope/telescope-frecency.nvim'},
-      {'tami5/sqlite.lua'}, -- required by frecency
       {
         -- NOTE: there is lualine widget that uses this plug-in, see my lualine config
         'rlch/github-notifications.nvim',
@@ -83,14 +81,6 @@ function M.setup(use)
             override_file_sorter = true,
             case_mode = "smart_case",        -- smart_case|ignore_case|respect_case
           },
-          frecency = {
-            show_scores = true,
-            workspaces = {
-              ["project"] = "~/projects",
-              ["practice"] = "~/projects",
-              ["git"] = "~/git",
-            }
-          },
           project = {
             base_dirs = { "~/projects" },
             hidden_files = true,
@@ -101,7 +91,6 @@ function M.setup(use)
       telescope.load_extension('fzf') -- MUST call AFTER setup
       telescope.load_extension('ui-select')
       telescope.load_extension('ghn') -- GitHub notifications
-      telescope.load_extension("frecency")
 
 
       for _, m in pairs(require("config.plugins.telescope").my_keymaps(true)) do
@@ -126,8 +115,6 @@ function M.setup(use)
       vim.keymap.set('n', '<leader>gn',
         require('telescope').extensions.ghn.notifications,
         { silent = true, noremap = true })
-
-      vim.keymap.set("n", "<leader>,", ":Telescope frecency<CR>", {noremap = true, silent = true})
 
     end
   }
