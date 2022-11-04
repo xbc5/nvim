@@ -70,6 +70,17 @@ function M.setup(use)
       name = "git",
       g = "lazy git",
       n = "notifications (GitHub)",
+      -- Git signs
+      s = "stage hunk",
+      u = "undo stage hunk",
+      r = "reset hunk",
+      p = "preview hunk",
+      S = "stage buffer",
+      R = "reset buffer",
+      d = "diff buffer",
+      b = "blame line",
+      B = "toggle blame line (virtual text)",
+      D = "toggle deleted",
     },
     ["<leader>l"] = { name = "LSP" },
     ["<leader>o"] = {
