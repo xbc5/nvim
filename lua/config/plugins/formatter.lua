@@ -22,7 +22,7 @@ function M.setup(use)
       vim.api.nvim_exec([[
         augroup FormatAutogroup
         autocmd!
-        autocmd BufWritePost *.js,*.ts,*.html,*.scss,*.css,*.md,*.less,*.json,*.yml,*.yaml FormatWrite
+        autocmd BufWritePost *.js,*.ts,*.html,*.scss,*.css,*.md,*.less,*.json,*.yml,*.yaml,*.go FormatWrite
         augroup END
       ]], true)
 
@@ -45,6 +45,15 @@ function M.setup(use)
           end
         }
       end
+
+      config.filetype["go"] = {
+        function()
+          return {
+            exe = "gofmt",
+            stdin = true
+          }
+        end
+      }
 
       require('formatter').setup(config)
 
