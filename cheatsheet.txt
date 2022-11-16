@@ -4,6 +4,16 @@ Re-display last command output                              | g<
 ## selection @visual
 Treesitter visual selection (like Hop)                      | vm
 
+## dap @debug @nav
+Continue (or start)                                         | <leader><M-J>
+Reverse continue                                            | <leader><M-K>
+Step over                                                   | <leader><M-j>
+Step back [one step]                                        | <leader><M-k>
+Step into                                                   | <leader><M-l>
+Step out                                                    | <leader><M-h>
+Move up [stack]                                             | <leader><M-u>
+Move down [stack]                                           | <leader><M-d>
+
 ## text-manipulation
 Toggle case (whole line)                                    | g~~
 Repeat a replace/substitute command for the entire buffer   | g&
