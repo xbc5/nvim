@@ -6,7 +6,7 @@ function M.setup(use)
     requires = {
       "williamboman/mason-lspconfig.nvim",
       "neovim/nvim-lspconfig",
-      "RRethy/vim-illuminate", -- highlight other identical words in buffer on hover
+      "RRethy/vim-illuminate", -- FIXME: move this; -- highlight other identical words in buffer on hover
     },
     after = "nvim-navic", -- sets up the winbar; uses lsp; passed to on_attach below
     config = function()
