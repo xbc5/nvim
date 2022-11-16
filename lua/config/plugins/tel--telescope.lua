@@ -93,7 +93,7 @@ function M.setup(use)
       telescope.load_extension('ghn') -- GitHub notifications
 
 
-      for _, m in pairs(require("config.plugins.telescope").my_keymaps(true)) do
+      for _, m in pairs(require("config.plugins.tel--telescope").my_keymaps(true)) do
         local mode = m[1]; local keys = m[2]; local action = m[3]
         vim.api.nvim_set_keymap(
           mode, keys, '<cmd>Telescope '..action..'<cr>', { noremap = true }

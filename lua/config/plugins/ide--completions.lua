@@ -4,7 +4,7 @@ function M.setup(use)
   use {
     'hrsh7th/nvim-cmp',
     requires = 'onsails/lspkind.nvim',  -- this is setup within nvim-cmp config
-    config = require("config.plugins.completions").cmp_config,
+    config = require("config.plugins.ide--completions").cmp_config,
   }
   use {
     'hrsh7th/cmp-nvim-lsp',
