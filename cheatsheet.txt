@@ -106,6 +106,15 @@ Change from one bracket to another                          | cs[{
 Wrap the entire line with parens                            | yssb | yss(
 Revert to original text                                     | ds{ds]
 
+## nvim-surround @text-objects
+surround inner-word with )                                  | ysiw)
+str => "str"                                                | ys$"
+delete around ]                                             | ds]
+remove HTML tags                                            | dst
+change quotes from ' to "                                   | cs'"
+change surrounding h1 tag                                   | csth1<CR>
+delete function call: foo()                                 | dsf
+
 ## help
 View key expressions used for maps                          | :h key-notation
 
