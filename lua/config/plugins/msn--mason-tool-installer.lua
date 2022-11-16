@@ -33,7 +33,7 @@ function M.setup(use)
           "rust-analyzer",
           "vim-language-server",
         },
-        auto_update = true,
+        auto_update = false,
         -- run_on_start = true, -- default
         start_delay = 5000,
       }
