@@ -6,6 +6,9 @@ function M.setup(use)
     requires = {'ray-x/guihua.lua'},
     config = function()
       require('go').setup{
+        max_line_len = 100, -- golines
+        lsp_cfg = true, -- use ray-x/go custom LSP config, includes "staticcheck" + more
+        goimport = "goimports", -- supports auto-imports
         test_runner = "ginkgo",
         dap_debug_keymap = false, -- use my own, defined in DAP config module
       }
@@ -15,6 +18,7 @@ function M.setup(use)
         callback = function()
           local fmt = require('go.format')
           fmt.goimport()
+          fmt.gofmt()
           -- fmt.gofmt()
         end,
         group = format_sync_grp,

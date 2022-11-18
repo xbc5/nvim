@@ -11,6 +11,9 @@ function M.setup(use)
         ensure_installed = {
           "delve",
           "gopls",
+          "golangci-lint", -- several linters
+          "golangci-lint-langserver", -- LSP server, relies on golangci-lint
+          "gofumpt", -- a stricter gofmt
 
           "eslint-lsp",
           "node-debug2-adapter",

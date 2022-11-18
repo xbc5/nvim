@@ -22,7 +22,7 @@ function M.setup(use)
       vim.api.nvim_exec([[
         augroup FormatAutogroup
         autocmd!
-        autocmd BufWritePost *.js,*.ts,*.html,*.scss,*.css,*.md,*.less,*.json,*.yml,*.yaml,*.go FormatWrite
+        autocmd BufWritePost *.js,*.ts,*.html,*.scss,*.css,*.md,*.less,*.json,*.yml,*.yaml FormatWrite
         augroup END
       ]], true)
 
@@ -46,14 +46,15 @@ function M.setup(use)
         }
       end
 
-      config.filetype["go"] = {
+      -- disable: ray-x/go does this
+      --[[ config.filetype["go"] = {
         function()
           return {
             exe = "gofmt",
             stdin = true
           }
         end
-      }
+      } ]]
 
       require('formatter').setup(config)
 
