@@ -4,7 +4,7 @@ Re-display last command output                              | g<
 ## selection @visual
 Treesitter visual selection (like Hop)                      | vm
 
-## dap @debug @nav
+## dap @debug @nav @personal
 Continue (or start)                                         | <leader><M-J>
 Reverse continue                                            | <leader><M-K>
 Step over                                                   | <leader><M-j>
@@ -13,6 +13,8 @@ Step into                                                   | <leader><M-l>
 Step out                                                    | <leader><M-h>
 Move up [stack]                                             | <leader><M-u>
 Move down [stack]                                           | <leader><M-d>
+Conditional breakpoint                                      | :BpCond 1 == 1
+Conditional breakpoint with extra args                      | :BpToggle "{cond}" "{max_hits}" "{log_msg}"
 
 ## text-manipulation
 Toggle case (whole line)                                    | g~~

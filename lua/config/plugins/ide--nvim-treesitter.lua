@@ -24,7 +24,8 @@ function M.setup(use)
     config = function()
       require("nvim-treesitter.configs").setup {
         ensure_installed = {
-          "bash", "lua", "css", "dockerfile", "html", "javascript", "json", "jsonc", "regex", "go",
+          -- BUG: go parser breaks <M-h|j|k|l> for some reason -- cuasing DAP to break
+          "bash", "lua", "css", "dockerfile", "html", "javascript", "json", "jsonc", "regex",
           "rust", "python", "svelte", "toml", "typescript", "yaml", "scss", "rst", "query", "vim",
         },
         -- nvim-treesitter-textobjects

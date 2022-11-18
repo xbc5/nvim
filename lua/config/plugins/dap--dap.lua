@@ -96,6 +96,9 @@ function M.setup(use)
       map('n', '<leader>er', '<Cmd>lua require("dap").repl.toggle()<CR>', opts)
 
       vim.cmd('command! -nargs=* JestDebug :lua require("config.plugins.dap").jest(<f-args>)')
+
+      vim.cmd('command! -nargs=1 BpCond :lua require("dap").toggle_breakpoint(<f-args>)')
+      vim.cmd('command! -nargs=* BpToggle :lua require("dap").toggle_breakpoint(<f-args>)')
     end
     }
 end

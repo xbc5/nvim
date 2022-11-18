@@ -3,6 +3,7 @@ local M = {}
 function M.setup(use)
   use {
     'leoluz/nvim-dap-go',
+    disable = true,
     config = function()
       require('dap-go').setup()
 
