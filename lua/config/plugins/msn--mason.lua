@@ -34,7 +34,7 @@ function M.setup(use)
             "jsonls",
             -- devops
             "dockerls",
-            "terraformls",
+            -- "terraformls",
             "salt_ls",
             "yamlls",
             -- other
