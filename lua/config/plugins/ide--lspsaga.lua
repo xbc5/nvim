@@ -3,8 +3,14 @@ local M = {}
 function M.setup(use)
   use {
     "glepnir/lspsaga.nvim",
+    requires = {
+      {"nvim-tree/nvim-web-devicons"},
+      --Please make sure you install markdown and markdown_inline parser
+      {"nvim-treesitter/nvim-treesitter"}
+    },
+
     config = function()
-      require('lspsaga').init_lsp_saga({})
+      require('lspsaga').setup({})
 
       local map = vim.keymap.set
       local opts = { silent = true, noremap = true }

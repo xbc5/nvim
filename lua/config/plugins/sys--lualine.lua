@@ -3,7 +3,7 @@ local M = {}
 function M.setup(use)
   use {
     'nvim-lualine/lualine.nvim',
-    requires = {'kyazdani42/nvim-web-devicons'},
+    requires = {'nvim-tree/nvim-web-devicons'},
     config = function()
       local colorscheme = vim.g.colors_name
 

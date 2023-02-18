@@ -15,16 +15,16 @@ return function(colorscheme, style)
       contrast = { -- contrast the following elements
         sidebars = true,
         floating_windows = true,
-        line_numbers = true,
-        sign_column = true,
         cursor_line = true,
         non_current_windows = true,
-        popup_menu = true,
       },
-
-      italics = {
-        comments = true,
-        keywords = true,
+      styles = {
+        comments = { italic = true },
+        keywords = { underline = true },
+      },
+      plugins = {
+        "dap", "gitsigns", "hop", "lspsaga", "nvim-cmp", "nvim-web-devicons",
+        "telescope", "which-key", "trouble",
       },
     })
 

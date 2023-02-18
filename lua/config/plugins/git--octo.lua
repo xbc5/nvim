@@ -6,7 +6,7 @@ function M.setup(use)
     requires = {
       'nvim-lua/plenary.nvim',
       'nvim-telescope/telescope.nvim',
-      'kyazdani42/nvim-web-devicons',
+      'nvim-tree/nvim-web-devicons',
     },
     config = function()
       local map = vim.api.nvim_set_keymap
