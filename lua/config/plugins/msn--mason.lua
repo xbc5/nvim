@@ -43,7 +43,7 @@ function M.setup(use)
             "gopls",
             "html",
             "pyright",
-            "sumneko_lua",
+            "lua_ls",
             "vimls",
             "rust_analyzer",
           }
@@ -65,7 +65,7 @@ function M.setup(use)
           return function(client, bufnr)
             local major_ls = { -- NOT auxiliary servers; primary servers
                 "tsserver", "bashls", "gopls", "html",
-                "pyright", "sumneko_lua", "rust_analyzer", "cssls" }
+                "pyright", "lua_ls", "rust_analyzer", "cssls" }
 
             if matchone(major_ls)[server_name] then
               -- this can only attach to one server, so make it the primary ft server
@@ -82,13 +82,28 @@ function M.setup(use)
             })
           end,
 
-          ["sumneko_lua"] = function()
+          ["lua_ls"] = function()
             lspconfig.sumneko_lua.setup({
-              on_attach = on_attach("sumneko_lua"),
+              on_attach = on_attach("lua_ls"),
               settings = {
                 Lua = {
+                  runtime = {
+                    -- Tell the language server which version of Lua
+                    --  you're using (most likely LuaJIT in the case of Neovim)
+                    version = 'LuaJIT',
+                  },
                   diagnostics = {
+                    -- Get the language server to recognize the `vim` global
                     globals = {'vim'},
+                  },
+                  workspace = {
+                    -- Make the server aware of Neovim runtime files
+                    library = vim.api.nvim_get_runtime_file("", true),
+                  },
+                  -- Do not send telemetry data containing a randomized but
+                  --  unique identifier
+                  telemetry = {
+                    enable = false,
                   },
                 },
               },

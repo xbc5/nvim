@@ -24,7 +24,7 @@ return function(colorscheme, style)
       },
       plugins = {
         "dap", "gitsigns", "hop", "lspsaga", "nvim-cmp", "nvim-web-devicons",
-        "telescope", "which-key", "trouble",
+        "telescope", "which-key", "trouble", "nvim-navic"
       },
     })
 
