@@ -3,19 +3,18 @@ local M = {}
 function M.my_keymaps(actions_wanted)
   local with_actions = {
     { "n", "<leader>m", "buffers" },
+    { "n", "<leader>fd", "diagnostics" },
     -- often used
-    { "n", "<leader>fhh", "help_tags" },
-    { "n", "<leader>fkk", "keymaps" },
+    { "n", "<leader>fh", "help_tags" },
+    { "n", "<leader>fk", "keymaps" },
     -- git
     { "n", "<leader>fgc", "git_commits" },
     { "n", "<leader>fgs", "git_status" },
     -- buffer
-    { "n", "<leader>fbd", "lsp_document_diagnostics" },
     { "n", "<leader>fbf", "current_buffer_fuzzy_find" },
     { "n", "<leader>fbr", "lsp_references" },
     { "n", "<leader>fbs", "lsp_document_symbols" },
     -- workspace
-    { "n", "<leader>fwd", "lsp_workspace_diagnostics" },
     { "n", "<leader>fwg", "live_grep" },
     { "n", "<leader>fwr", "lsp_references" },
     { "n", "<leader>fws", "lsp_workspace_symbols" },

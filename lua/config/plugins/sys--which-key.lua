@@ -41,12 +41,30 @@ function M.setup(use)
     ["["] = ts_move,
     ["<leader>f"] = {
       name = "fuzzy",
-      b = { name = "buffer" },
-      g = { name = "git" },
+      b = {
+        name = "buffer",
+        f = "find",
+        r = "references",
+        s = "symbols",
+      },
+      d = { name = "diagnostics" },
+      g = {
+        name = "git",
+        c = "commits",
+        s = "status",
+      },
       h = { name = "help" },
+      k = { name = "keymaps" },
+      m = { name = "buffers" },
+      n = { name = "notifications" },
       p = { name = "projects" },
       t = { name = "TODOs" },
-      w = { name = "workspace" },
+      w = {
+        name = "workspace",
+        g = "grep",
+        r = "references",
+        s = "symbols",
+      },
     },
     ["<leader>b"] = {
       name = "buffer",
