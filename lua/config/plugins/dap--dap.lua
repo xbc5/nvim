@@ -34,7 +34,7 @@ function M.setup(use)
   use {
     'theHamsta/nvim-dap-virtual-text',
     config = function()
-      require('nvim-dap-virtual-text').setup()
+      require('nvim-dap-virtual-text').setup({})
     end
   }
 

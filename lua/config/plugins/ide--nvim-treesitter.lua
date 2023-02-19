@@ -74,12 +74,12 @@ function M.setup(use)
           swap = {
             enable = true,
             swap_next = {
-              ["<M-l>"] = "@parameter.inner",
-              ["<M-j>"] = "@function.outer",
+              ["<S-C-l>"] = "@parameter.inner",
+              ["<s-C-j>"] = "@function.outer",
             },
             swap_previous = {
-              ["<M-h>"] = "@parameter.inner",
-              ["<M-k>"] = "@function.outer",
+              ["<S-C-h>"] = "@parameter.inner",
+              ["<S-C-k>"] = "@function.outer",
             },
           },
         },
