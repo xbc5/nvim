@@ -11,6 +11,7 @@ function M.setup(use)
         goimport = "goimports", -- supports auto-imports
         test_runner = "ginkgo",
         dap_debug_keymap = false, -- use my own, defined in DAP config module
+        dap_debug_gui = false, -- crap, useless, buggy
       }
 
       vim.api.nvim_create_autocmd("BufWritePre", {
