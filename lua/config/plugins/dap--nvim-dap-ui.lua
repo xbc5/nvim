@@ -3,7 +3,7 @@ local M = {}
 function M.setup(use)
   use {
     'rcarriga/nvim-dap-ui',
-    disable = true,
+    disable = false,
     requires = {'mfussenegger/nvim-dap'},
     config = function()
       local dapui = require("dapui")
