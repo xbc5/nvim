@@ -8,7 +8,6 @@ function M.setup(use)
       "neovim/nvim-lspconfig",
       "RRethy/vim-illuminate", -- FIXME: move this; -- highlight other identical words in buffer on hover
     },
-    after = "nvim-navic", -- sets up the winbar; uses lsp; passed to on_attach below
     config = function()
       vim.cmd('command! LspReload LspRestart | edit)') -- reload LSP then buffer
 
@@ -44,7 +43,6 @@ function M.setup(use)
 
             if matchone(major_ls)[server_name] then
               -- this can only attach to one server, so make it the primary ft server
-              require("nvim-navic").attach(client, bufnr)
               require('illuminate').on_attach(client) -- no point attaching it to auxiliary servers
             end
           end
