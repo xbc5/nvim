@@ -42,7 +42,8 @@ function M.setup(use)
             "cmake",
             "gopls",
             "html",
-            "pyright",
+            "ruff-lsp", -- python linter, code formatter
+            "jedi-language-server", -- python language server (pyright is garbage)
             "lua_ls",
             "vimls",
             "rust_analyzer",
