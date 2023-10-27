@@ -23,11 +23,21 @@ function M.setup(use)
     'nvim-treesitter/nvim-treesitter',
     config = function()
       require("nvim-treesitter.configs").setup {
+        sync_install = false,
+        auto_install = true,
+        ignore_install = {},
+        modules = {},
+        highlight = {
+          enable = true,
+        },
         ensure_installed = {
           -- BUG: go parser breaks <M-h|j|k|l> for some reason -- causing DAP to break
           "bash", "lua", "css", "dockerfile", "html", "javascript", "json", "jsonc", "regex",
           "rust", "python", "svelte", "toml", "typescript", "yaml", "scss", "rst", "query", "vim",
-          "markdown", "markdown_inline", -- used by lspsaga
+          "c", "cmake", "cpp", "csv", "diff", "git_config", "git_rebase", "gitattributes", "gitcommit",
+          "gitignore", "markdown", "markdown_inline", "go", "gomod", "gosum", "gowork", "gpg", "jsdoc",
+          "json5", "jsonc", "luadoc", "toml", "vimdoc"
+          ,
         },
         -- nvim-treesitter-textobjects
         textobjects = {
