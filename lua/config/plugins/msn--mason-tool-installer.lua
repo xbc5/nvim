@@ -1,8 +1,8 @@
 local M = {}
 
+-- use cases: you can pin specific version, auto update, or update via command
+
 function M.setup(use)
-
-
   use {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     after = "mason.nvim",
@@ -36,8 +36,8 @@ function M.setup(use)
           "rust-analyzer",
           "vim-language-server",
         },
-        auto_update = true,
-        run_on_start = true,
+        auto_update = false,
+        run_on_start = false,
         -- run_on_start = true, -- default
         start_delay = 5000,
         debounce_hours = 48,

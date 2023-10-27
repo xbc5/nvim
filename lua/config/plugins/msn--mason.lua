@@ -22,33 +22,7 @@ function M.setup(use)
 
       if mason_lsp then
         -- run this before creating setup_handlers
-        mason_lsp.setup {
-          automatic_installation = true,
-          ensure_installed = {
-            -- web
-            "tsserver",
-            "cssls",
-            "emmet_ls",
-            "eslint",
-            "tailwindcss",
-            "jsonls",
-            -- devops
-            "dockerls",
-            -- "terraformls",
-            "salt_ls",
-            "yamlls",
-            -- other
-            "bashls",
-            "cmake",
-            "gopls",
-            "html",
-            "ruff-lsp", -- python linter, code formatter
-            "jedi-language-server", -- python language server (pyright is garbage)
-            "lua_ls",
-            "vimls",
-            "rust_analyzer",
-          }
-        }
+        mason_lsp.setup { }
 
         local lspconfig = try_require("lspconfig")
 
