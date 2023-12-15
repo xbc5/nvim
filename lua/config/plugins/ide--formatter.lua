@@ -22,7 +22,7 @@ function M.setup(use)
       vim.api.nvim_exec([[
         augroup FormatAutogroup
         autocmd!
-        autocmd BufWritePost *.js,*.ts,*.html,*.scss,*.css,*.md,*.less,*.json,*.yml,*.yaml FormatWrite
+        autocmd BufWritePost *.js,*.ts,*.jsx,*.tsx,*.html,*.scss,*.css,*.md,*.less,*.json,*.yml,*.yaml FormatWrite
         augroup END
       ]], true)
 
@@ -33,7 +33,8 @@ function M.setup(use)
 
       -- WARN: don't forget to update autocommand when adding new formatters.
       local forPrettier = {"html", "javascript", "typescript", "yaml",
-                           "scss", "markdown", "less", "css", "json"}
+                           "scss", "markdown", "less", "css", "json",
+                           "javascriptreact", "typescriptreact"}
       for _, t in pairs(forPrettier) do
         config.filetype[t] = {
           function()
