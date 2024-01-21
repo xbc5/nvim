@@ -36,8 +36,8 @@ function M.setup(use)
           "rust", "python", "svelte", "toml", "typescript", "yaml", "scss", "rst", "query", "vim",
           "c", "cmake", "cpp", "csv", "diff", "git_config", "git_rebase", "gitattributes", "gitcommit",
           "gitignore", "markdown", "markdown_inline", "go", "gomod", "gosum", "gowork", "gpg", "jsdoc",
-          "json5", "jsonc", "luadoc", "toml", "vimdoc"
-          ,
+          "json5", "jsonc", "luadoc", "toml", "vimdoc", "starlark", "sql", "terraform", "tsx", "toml",
+          "perl", "ocaml", "nix", "make", "http", "groovy", "awk",
         },
         -- nvim-treesitter-textobjects
         textobjects = {
