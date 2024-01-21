@@ -92,7 +92,6 @@ function M.setup(use)
     ["<leader>g"] = {
       name = "git",
       g = "lazy git",
-      n = "notifications (GitHub)",
       -- Git signs
       s = "stage hunk",
       u = "undo stage hunk",

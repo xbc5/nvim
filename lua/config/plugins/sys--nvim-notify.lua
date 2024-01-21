@@ -3,6 +3,7 @@ local M = {}
 function M.setup(use)
   use {
     "rcarriga/nvim-notify",
+    disable = true,
     require = "nvim-telescope/telescope.nvim",
     config = function()
       local notify = require("notify")

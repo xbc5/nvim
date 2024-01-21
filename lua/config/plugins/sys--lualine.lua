@@ -17,11 +17,6 @@ function M.setup(use)
         options = {
           theme = themes[colorscheme] or colorscheme -- lualine defaults to gruvbox if none is found.
         },
-        sections = {
-          lualine_b = {
-            'branch', require('github-notifications').statusline_notification_count
-          },
-        },
       })
     end
   }

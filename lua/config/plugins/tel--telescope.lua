@@ -40,23 +40,6 @@ function M.setup(use)
       {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'},
       {'nvim-telescope/telescope-project.nvim'},
       {'nvim-telescope/telescope-ui-select.nvim' },
-      {
-        -- NOTE: there is lualine widget that uses this plug-in, see my lualine config
-        'rlch/github-notifications.nvim',
-        config = function()
-          local try_require = require("lib.nvim").try_require
-          local secrets = try_require('config.secrets.github').notifications
-          if not secrets then
-            vim.notify("You must supply GitHub secrets to get notifications.", "warn")
-            return
-          end
-          require('github-notifications').setup {
-            username = secrets.user,
-            token = secrets.token,
-            debounce_duration = 300,
-          }
-        end
-      }
     },
     config = function()
       local telescope = require("telescope")
@@ -89,8 +72,6 @@ function M.setup(use)
 
       telescope.load_extension('fzf') -- MUST call AFTER setup
       telescope.load_extension('ui-select')
-      telescope.load_extension('ghn') -- GitHub notifications
-
 
       for _, m in pairs(require("config.plugins.tel--telescope").my_keymaps(true)) do
         local mode = m[1]; local keys = m[2]; local action = m[3]
@@ -110,10 +91,6 @@ function M.setup(use)
       vim.keymap.set('n', '<leader>n', function()
         require("telescope.builtin").find_files { hidden = true }
       end , { noremap = true })
-
-      vim.keymap.set('n', '<leader>gn',
-        require('telescope').extensions.ghn.notifications,
-        { silent = true, noremap = true })
 
     end
   }

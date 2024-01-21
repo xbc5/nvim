@@ -9,7 +9,6 @@ return require('packer').startup({function(use)
     use 'wbthomason/packer.nvim' -- manage packer updates
     use 'vim-scripts/loremipsum'
     use 'b3nj5m1n/kommentary'
-    use 'j-hui/fidget.nvim'
     use 'marko-cerovac/material.nvim'
     use 'tpope/vim-obsession'
     use {
