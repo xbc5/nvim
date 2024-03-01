@@ -3,6 +3,11 @@ lua << EOF
 require("config.theme")("material", "deep ocean")
 -- this one might throw
 require("plugins")
+
+local map = vim.api.nvim_set_keymap
+-- generate a random tag string (for tests): e.g. #djU37w
+map('i', '<A-t>', '<C-o>:lua require("lib.util").insert_tag()<CR>',
+    {noremap = true, silent = true})
 EOF
 
 " nvim-treesitter-context: display scope declaration at top of screen
@@ -92,6 +97,9 @@ nnoremap <silent> <leader>bk <cmd>bd<cr>
 " move line up/down
 noremap <C-k> <cmd>m -2<cr>
 noremap <C-j> <cmd>m +1<cr>
+
+
+
 " move selection up/down
 vnoremap J :m '>+2<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
