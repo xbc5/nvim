@@ -9,7 +9,7 @@ function M.shell_cmd(cmd, PIPE)
   local f = io.popen(cmd..pipe)
   local s = f:read('*l')
   f:close()
- 
+
   return s
 end
 
@@ -42,6 +42,13 @@ end
 
 function M.is_templatevm()
   return M.file_exists("/var/run/qubes/this-is-templatevm")
+end
+
+-- Is non-root and not TemplateVM
+function M.suitable_env()
+  if M.is_user() and not M.is_templatevm() then
+    return true
+  end
 end
 
 return M
