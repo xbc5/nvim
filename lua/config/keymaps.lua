@@ -13,9 +13,6 @@ map("n", "<leader>sw", ":set wrap!<CR>")
 -- delete all other buffers
 map("n", "<leader>bo", ":%bd\\|e#\\|bd#<CR>")
 
-map("n", "<C-k>", ":m -2<CR>")
-map("n", "<C-j>bo", ":m +1<CR>")
-
 -- centre screen when jumping through search
 map("n", "n", "nzzzv")
 map("n", "M", "Nzzzv")
@@ -25,3 +22,5 @@ map("n", "J", "mzJ`z")
 
 -- replace visual selection with paste, sending the deletion to a void register.
 map("v", "<leader>p", "_dP")
+
+map("n", "<leader>fC", ":Cheatsheet<CR>", { desc = "Cheatsheet Open" })

@@ -1,3 +1,5 @@
+local tabl = require("lib.table")
+
 local M = {}
 
 -- Use err, info, or warn instead of this function.
@@ -47,9 +49,11 @@ function M.pre_init()
   vim.api.nvim_set_option("termguicolors", true) -- required for 16 bit terminals
 end
 
-function M.map(mode, lhs, rhs)
-  local opts = { noremap = true, silent = true }
-  vim.api.nvim_set_keymap(mode, lhs, rhs, opts)
+-- Map with default opts. Remember that which-key reads the { desc = "" }
+-- opt for its descriptions.
+function M.map(mode, lhs, rhs, opts)
+  local o = tabl.merge({ noremap = true, silent = true }, opts or {})
+  vim.api.nvim_set_keymap(mode, lhs, rhs, o)
 end
 
 return M
