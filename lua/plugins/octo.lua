@@ -1,27 +1,26 @@
+local map = require("lib.nvim").map
+
 return {
   {
-    'pwntester/octo.nvim',
+    "pwntester/octo.nvim",
     dependencies = {
-      'nvim-lua/plenary.nvim',
-      'nvim-telescope/telescope.nvim',
-      'nvim-tree/nvim-web-devicons',
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+      "nvim-tree/nvim-web-devicons",
     },
     config = function()
-      local map = vim.api.nvim_set_keymap
-      local opts = { silent = true, noremap = true }
-
       -- these are to initiate Octo outside of an Octo buffer
-      map('n', '<leader>oil', '<CMD>Octo issue list<CR>', opts)
-      map('n', '<leader>oic', '<CMD>Octo issue create<CR>', opts)
-      map('n', '<leader>ois', '<CMD>Octo issue search<CR>', opts)
-      map('n', '<leader>opl', '<CMD>Octo pr list<CR>', opts)
-      map('n', '<leader>opc', '<CMD>Octo pr create<CR>', opts)
-      map('n', '<leader>opr', '<CMD>Octo pr checks<CR>', opts)
-      map('n', '<leader>os', '<CMD>Octo search<CR>', opts)
+      map("n", "<leader>oil", "<CMD>Octo issue list<CR>")
+      map("n", "<leader>oic", "<CMD>Octo issue create<CR>")
+      map("n", "<leader>ois", "<CMD>Octo issue search<CR>")
+      map("n", "<leader>opl", "<CMD>Octo pr list<CR>")
+      map("n", "<leader>opc", "<CMD>Octo pr create<CR>")
+      map("n", "<leader>opr", "<CMD>Octo pr checks<CR>")
+      map("n", "<leader>os", "<CMD>Octo search<CR>")
 
-      require"octo".setup({
+      require("octo").setup({
         file_panel = {
-          size = 10,                             -- changed files panel rows
+          size = 10, -- changed files panel rows
         },
         mappings = {
           issue = {
@@ -133,9 +132,9 @@ return {
             select_prev_entry = { lhs = "[q", desc = "move to next changed file" },
             close_review_tab = { lhs = "<C-c>", desc = "close review tab" },
             toggle_viewed = { lhs = "<leader>tv", desc = "toggle viewer viewed state" },
-          }
-        }
+          },
+        },
       })
-    end
-  }
+    end,
+  },
 }

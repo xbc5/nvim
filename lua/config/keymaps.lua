@@ -4,14 +4,14 @@
 local map = require("lib.nvim").map
 
 -- generate a random tag string (for tests): e.g. #djU37w
-map("i", "<A-t>", '<C-o>:lua require("lib.util").insert_tag()<CR>')
+map("i", "<A-t>", '<C-o>:lua require("lib.util").insert_tag()<CR>', { desc = "Hash Tag Generator" })
 
-map("n", "<leader>sl", ":set list!<CR>")
-map("n", "<leader>ss", ":set spell!<CR>")
-map("n", "<leader>sw", ":set wrap!<CR>")
+map("n", "<leader>sl", ":set list!<CR>", { desc = "Invisible Chars Toggle" })
+map("n", "<leader>ss", ":set spell!<CR>", { desc = "Spell Check Toggle" })
+map("n", "<leader>sw", ":set wrap!<CR>", { desc = "Line Wrap Toggle" })
 
 -- delete all other buffers
-map("n", "<leader>bo", ":%bd\\|e#\\|bd#<CR>")
+map("n", "<leader>bo", ":%bd\\|e#\\|bd#<CR>", { desc = "Buffer Only (delete all others)" })
 
 -- centre screen when jumping through search
 map("n", "n", "nzzzv")
@@ -21,6 +21,6 @@ map("n", "M", "Nzzzv")
 map("n", "J", "mzJ`z")
 
 -- replace visual selection with paste, sending the deletion to a void register.
-map("v", "<leader>p", "_dP")
+map("v", "<leader>p", "_dP", { desc = "Paste and replace selection" })
 
 map("n", "<leader>fC", ":Cheatsheet<CR>", { desc = "Cheatsheet Open" })

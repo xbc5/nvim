@@ -1,3 +1,5 @@
+local map = require("lib.nvim").map
+
 return {
   {
     "nvim-treesitter/playground",
@@ -10,9 +12,8 @@ return {
     "mfussenegger/nvim-treehopper",
     dependencies = { "nvim-treesitter/nvim-treesitter", "phaazon/hop.nvim" },
     config = function()
-      local map = vim.api.nvim_set_keymap
-      map("o", "m", ":lua require('tsht').nodes()<CR>", { silent = true })
-      map("v", "m", ":lua require('tsht').nodes()<CR>", { silent = true, noremap = true })
+      map("o", "m", ":lua require('tsht').nodes()<CR>", { noremap = false, desc = "Select Node with TSHT" })
+      map("v", "m", ":lua require('tsht').nodes()<CR>", { desc = "Select Node with TSHT" })
     end,
   },
 

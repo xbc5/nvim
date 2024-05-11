@@ -4,8 +4,8 @@ return {
   {
     "famiu/bufdelete.nvim",
     config = function()
-      map("n", "<leader>bd", ":Bdelete<CR>")
-      map("n", "<leader>bk", ":bd<CR>")
+      map("n", "<leader>bd", ":Bdelete<CR>", { desc = "Blank Buffer" })
+      map("n", "<leader>bk", ":bd<CR>", { desc = "Kill Buffer" })
     end,
   },
 }

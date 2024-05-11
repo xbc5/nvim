@@ -1,3 +1,5 @@
+local map = require("lib.nvim").map
+
 local function my_keymaps(actions_wanted)
   local with_actions = {
     { "n", "<leader>m", "buffers" },
@@ -77,15 +79,15 @@ return {
         local mode = m[1]
         local keys = m[2]
         local action = m[3]
-        vim.api.nvim_set_keymap(mode, keys, "<cmd>Telescope " .. action .. "<cr>", { noremap = true })
+        map(mode, keys, "<cmd>Telescope " .. action .. "<cr>")
       end
 
       telescope.load_extension("project") -- project.nvim: fuzzy finder for projects
-      vim.api.nvim_set_keymap(
+      map(
         "n",
         "<leader>fp",
         ":lua require'telescope'.extensions.project.project{ display_type = 'full' }<CR>",
-        { noremap = true, silent = true }
+        { desc = "Project Picker" }
       )
 
       vim.keymap.set("n", "<leader>n", function()
