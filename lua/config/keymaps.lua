@@ -11,7 +11,7 @@ map("n", "<leader>ss", ":set spell!<CR>", { desc = "Spell Check Toggle" })
 map("n", "<leader>sw", ":set wrap!<CR>", { desc = "Line Wrap Toggle" })
 
 -- delete all other buffers
-map("n", "<leader>bo", ":%bd\\|e#\\|bd#<CR>", { desc = "Buffer Only (delete all others)" })
+map("n", "<leader>bo", ":%bd|e#|bd#<CR>", { desc = "Buffer Only (delete all others)" })
 
 -- centre screen when jumping through search
 map("n", "n", "nzzzv")
