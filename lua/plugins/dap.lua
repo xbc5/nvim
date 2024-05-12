@@ -45,7 +45,9 @@ return {
   },
   {
     "leoluz/nvim-dap-go",
+    event = { "VeryLazy" },
     config = function()
+      -- The LazyVim spec does not define a config function -- so it's safe to define this.
       vim.api.nvim_create_user_command("GoDebugTest", function()
         require("dap-go").debug_test()
       end, { desc = "Debug the nearest Go test with delve" })
