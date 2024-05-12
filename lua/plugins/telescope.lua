@@ -1,13 +1,12 @@
-local map = require("lib.nvim").map
-
 return {
-  { "ahmedkhalf/project.nvim", enabled = false }, -- use official one instead: nvim-telescope/telescope-project.nvim
+  { "ahmedkhalf/project.nvim", enabled = false }, -- use the official one instead: nvim-telescope/telescope-project.nvim
   {
     "nvim-telescope/telescope.nvim",
+    cmd = "Telescope",
     dependencies = {
-      { "nvim-tree/nvim-web-devicons" },
-      { "nvim-telescope/telescope-project.nvim" },
-      { "nvim-telescope/telescope-ui-select.nvim" },
+      { "nvim-telescope/telescope-project.nvim", event = "Telescope" },
+      { "nvim-tree/nvim-web-devicons", event = "VeryLazy" },
+      { "nvim-telescope/telescope-ui-select.nvim", event = "VeryLazy" },
     },
     opt = {
       defaults = {
@@ -29,7 +28,7 @@ return {
           case_mode = "smart_case", -- smart_case|ignore_case|respect_case
         },
         project = {
-          base_dirs = { "~/projects" },
+          base_dirs = { "~/projects", "~/git" },
           hidden_files = true,
         },
       },
@@ -37,6 +36,7 @@ return {
     keys = {
       { "<leader>m", "<cmd>Telescope buffers<cr>" },
       { "<leader>fd", "<cmd>Telescope diagnostics<cr>" },
+      { "<leader>fp", "<cmd>Telescope project<cr>" },
       -- often used
       { "<leader>fh", "<cmd>Telescope help_tags<cr>" },
       { "<leader>fk", "<cmd>Telescope keymaps<cr>" },
@@ -59,13 +59,6 @@ return {
       telescope.load_extension("fzf")
       telescope.load_extension("ui-select")
       telescope.load_extension("project")
-
-      map(
-        "n",
-        "<leader>fp",
-        ":lua require'telescope'.extensions.project.project{ display_type = 'full' }<CR>",
-        { desc = "Project Picker" }
-      )
 
       vim.keymap.set("n", "<leader>n", function()
         require("telescope.builtin").find_files({ hidden = true })
