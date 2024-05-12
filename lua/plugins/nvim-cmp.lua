@@ -99,14 +99,17 @@ end
 
 return {
   {
-    "hrsh7th/nvim-cmp",
-    config = cmp_config,
-  },
-  {
     "saadparwaiz1/cmp_luasnip",
+    event = "BufEnter",
     dependencies = {
       {
+        "hrsh7th/nvim-cmp",
+        event = "BufEnter",
+        config = cmp_config,
+      },
+      {
         "L3MON4D3/LuaSnip",
+        event = "BufEnter",
         config = function()
           local ls = require("luasnip")
           local types = require("luasnip.util.types")
@@ -146,7 +149,6 @@ return {
           vim.keymap.set("s", "<M-n>", next_choice, opts)
         end,
       },
-      "hrsh7th/nvim-cmp",
     },
   },
 }
