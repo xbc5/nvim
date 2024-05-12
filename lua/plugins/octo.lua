@@ -1,23 +1,14 @@
-local map = require("lib.nvim").map
-
 return {
   {
+    -- NOTE: there are keymaps in keymaps/ for launching Octo from a lazy loaded state
     "pwntester/octo.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope.nvim",
       "nvim-tree/nvim-web-devicons",
     },
+    cmd = { "Octo" },
     config = function()
-      -- these are to initiate Octo outside of an Octo buffer
-      map("n", "<leader>oil", "<CMD>Octo issue list<CR>")
-      map("n", "<leader>oic", "<CMD>Octo issue create<CR>")
-      map("n", "<leader>ois", "<CMD>Octo issue search<CR>")
-      map("n", "<leader>opl", "<CMD>Octo pr list<CR>")
-      map("n", "<leader>opc", "<CMD>Octo pr create<CR>")
-      map("n", "<leader>opr", "<CMD>Octo pr checks<CR>")
-      map("n", "<leader>os", "<CMD>Octo search<CR>")
-
       require("octo").setup({
         file_panel = {
           size = 10, -- changed files panel rows

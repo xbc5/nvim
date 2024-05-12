@@ -24,3 +24,12 @@ map("n", "J", "mzJ`z")
 map("v", "<leader>p", "_dP", { desc = "Paste and replace selection" })
 
 map("n", "<leader>fC", ":Cheatsheet<CR>", { desc = "Cheatsheet Open" })
+
+-- Octo: lazy loaded; requires perm keymaps
+map("n", "<leader>oil", "<CMD>Octo issue list<CR>")
+map("n", "<leader>oic", "<CMD>Octo issue create<CR>")
+map("n", "<leader>ois", "<CMD>Octo issue search<CR>")
+map("n", "<leader>opl", "<CMD>Octo pr list<CR>")
+map("n", "<leader>opc", "<CMD>Octo pr create<CR>")
+map("n", "<leader>opr", "<CMD>Octo pr checks<CR>")
+map("n", "<leader>os", "<CMD>Octo search<CR>")
