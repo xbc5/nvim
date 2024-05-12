@@ -2,21 +2,14 @@ local map = require("lib.nvim").map
 
 return {
   {
-    "ray-x/lsp_signature.nvim",
-    config = function()
-      require("lsp_signature").setup({
-        bind = true, -- mandatory, else border config breaks
-        extra_trigger_chars = { "(", "{", "," },
-      })
-    end,
-  },
-  {
     "nvimdev/lspsaga.nvim",
     dependencies = {
       { "nvim-tree/nvim-web-devicons" },
       -- You must install markdown and markdown_inline parser for the mini display
       { "nvim-treesitter/nvim-treesitter" },
     },
+
+    cmd = "LspSaga",
 
     config = function()
       require("lspsaga").setup({
@@ -36,8 +29,8 @@ return {
       map("n", "<leader>lx", "<cmd>Lspsaga show_cursor_diagnostics<cr>")
       map("n", "<leader>lci", "<cmd>Lspsaga incoming_calls<cr>")
       map("n", "<leader>lco", "<cmd>Lspsaga outgoing_calls<cr>")
-      map("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<cr>")
-      map("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<cr>")
+      map("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<cr>", { desc = "Lspsaga Next Diagnostic" })
+      map("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<cr>", { desc = "Lspsacat Prev Diagnostic" })
     end,
   },
 }

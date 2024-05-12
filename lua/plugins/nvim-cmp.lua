@@ -81,9 +81,11 @@ local function cmp_config()
     sources = cmp.config.sources(
       -- order of importance, outer table is to facilitate this
       {
+        { name = "nvim_lsp_signature_help" },
         { name = "codeium" },
         { name = "luasnip" },
         { name = "nvim_lsp" },
+        { name = "nvim_lua" },
       },
       {
         { name = "path" },
