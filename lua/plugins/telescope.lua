@@ -1,88 +1,65 @@
 local map = require("lib.nvim").map
 
-local function my_keymaps(actions_wanted)
-  local with_actions = {
-    { "n", "<leader>m", "buffers" },
-    { "n", "<leader>fd", "diagnostics" },
-    -- often used
-    { "n", "<leader>fh", "help_tags" },
-    { "n", "<leader>fk", "keymaps" },
-    -- git
-    { "n", "<leader>fgc", "git_commits" },
-    { "n", "<leader>fgs", "git_status" },
-    -- buffer
-    { "n", "<leader>fbf", "current_buffer_fuzzy_find" },
-    { "n", "<leader>fbr", "lsp_references" },
-    { "n", "<leader>fbs", "lsp_document_symbols" },
-    -- workspace
-    { "n", "<leader>fwg", "live_grep" },
-    { "n", "<leader>fwr", "lsp_references" },
-    { "n", "<leader>fws", "lsp_workspace_symbols" },
-  }
-
-  if actions_wanted then
-    return with_actions
-  end
-
-  local without_actions = {}
-  for i, item in ipairs(with_actions) do
-    local mode = item[1]
-    local keys = item[2]
-    without_actions[i] = { mode, keys }
-  end
-  return without_actions
-end
-
 return {
+  { "ahmedkhalf/project.nvim", enabled = false }, -- use official one instead: nvim-telescope/telescope-project.nvim
   {
     "nvim-telescope/telescope.nvim",
     dependencies = {
-      { "nvim-lua/popup.nvim" },
-      { "nvim-lua/plenary.nvim" },
       { "nvim-tree/nvim-web-devicons" },
       { "nvim-telescope/telescope-project.nvim" },
       { "nvim-telescope/telescope-ui-select.nvim" },
     },
-    config = function()
+    opt = {
+      defaults = {
+        layout_config = {
+          horizontal = {
+            mirror = false,
+          },
+          vertical = {
+            mirror = false,
+          },
+        },
+        set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
+      },
+      extensions = {
+        fzf = {
+          fuzzy = true, -- false will only do exact matching
+          override_generic_sorter = true,
+          override_file_sorter = true,
+          case_mode = "smart_case", -- smart_case|ignore_case|respect_case
+        },
+        project = {
+          base_dirs = { "~/projects" },
+          hidden_files = true,
+        },
+      },
+    },
+    keys = {
+      { "<leader>m", "<cmd>Telescope buffers<cr>" },
+      { "<leader>fd", "<cmd>Telescope diagnostics<cr>" },
+      -- often used
+      { "<leader>fh", "<cmd>Telescope help_tags<cr>" },
+      { "<leader>fk", "<cmd>Telescope keymaps<cr>" },
+      -- git
+      { "<leader>fgc", "<cmd>Telescope git_commits<cr>" },
+      { "<leader>fgs", "<cmd>Telescope git_status<cr>" },
+      -- buffer
+      { "<leader>fbf", "<cmd>Telescope current_buffer_fuzzy_find<cr>" },
+      { "<leader>fbr", "<cmd>Telescope lsp_references<cr>" },
+      { "<leader>fbs", "<cmd>Telescope lsp_document_symbols<cr>" },
+      -- workspace
+      { "<leader>fwg", "<cmd>Telescope live_grep<cr>" },
+      { "<leader>fwr", "<cmd>Telescope lsp_references<cr>" },
+      { "<leader>fws", "<cmd>Telescope lsp_workspace_symbols<cr>" },
+    },
+    config = function(_, opts)
       local telescope = require("telescope")
 
-      telescope.setup({
-        defaults = {
-          layout_config = {
-            horizontal = {
-              mirror = false,
-            },
-            vertical = {
-              mirror = false,
-            },
-          },
-          set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
-        },
-        extensions = {
-          fzf = {
-            fuzzy = true, -- false will only do exact matching
-            override_generic_sorter = true,
-            override_file_sorter = true,
-            case_mode = "smart_case", -- smart_case|ignore_case|respect_case
-          },
-          project = {
-            base_dirs = { "~/projects" },
-            hidden_files = true,
-          },
-        },
-      })
-
-      telescope.load_extension("fzf") -- MUST call AFTER setup
+      telescope.setup(opts)
+      telescope.load_extension("fzf")
       telescope.load_extension("ui-select")
+      telescope.load_extension("project")
 
-      for _, m in pairs(my_keymaps(true)) do
-        local mode = m[1]
-        local keys = m[2]
-        local action = m[3]
-        map(mode, keys, "<cmd>Telescope " .. action .. "<cr>")
-      end
-
-      telescope.load_extension("project") -- project.nvim: fuzzy finder for projects
       map(
         "n",
         "<leader>fp",
