@@ -60,9 +60,9 @@ return {
       telescope.load_extension("ui-select")
       telescope.load_extension("project")
 
-      vim.keymap.set("n", "<leader>n", function()
-        require("telescope.builtin").find_files({ hidden = true })
-      end, { noremap = true })
+      telescope.builtin.find_files({
+        find_command = { "rg", "--files", "--hidden", "-g", "!.git" },
+      })
     end,
   },
 }
