@@ -1,8 +1,9 @@
 return {
   {
     "norcalli/nvim-colorizer.lua",
+    event = { "BufEnter" },
     config = function()
-        require("colorizer").setup {
+      require("colorizer").setup({
         -- Add options to a filetype key -- e.g. 'typescript' = {}
         --[[ DEFAULTS
         RGB      = true;         -- #RGB hex codes
@@ -14,8 +15,8 @@ return {
         css      = false;        -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
         css_fn   = false;        -- Enable all CSS *functions*: rgb_fn, hsl_fn
         mode     = 'background'; -- Set the display mode: foreground/background ]]
-        '*', -- enable for all extensions, but does not take a table (must be string only, and first defined too.
-      }
-    end
-  }
+        "*", -- enable for all extensions, but does not take a table (must be string only, and first defined too.
+      })
+    end,
+  },
 }

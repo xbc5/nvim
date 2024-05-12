@@ -7,9 +7,9 @@ return {
     cmd = "TSPlaygroundToggle",
   },
 
-  -- TODO: lazy load
   {
     "mfussenegger/nvim-treehopper",
+    event = { "BufEnter" },
     dependencies = { "nvim-treesitter/nvim-treesitter", "phaazon/hop.nvim" },
     config = function()
       map("o", "m", ":lua require('tsht').nodes()<CR>", { noremap = false, desc = "Select Node with TSHT" })
