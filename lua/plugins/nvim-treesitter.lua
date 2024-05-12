@@ -44,6 +44,16 @@ return {
             ["il"] = "@loop.inner",
           },
         },
+        swap = {
+          enable = true,
+          -- swap the node under the cursor: e.g. param, function
+          swap_next = {
+            ["<C-J>"] = "@parameter.inner",
+          },
+          swap_previous = {
+            ["<C-K>"] = "@parameter.inner",
+          },
+        },
         move = {
           enable = true,
           set_jumps = true, -- true: add to jump list
@@ -62,17 +72,6 @@ return {
           goto_previous_end = {
             ["[F"] = "@function.outer",
             ["[X"] = "@class.outer",
-          },
-        },
-        swap = {
-          enable = true,
-          swap_next = {
-            ["<S-C-l>"] = "@parameter.inner",
-            ["<s-C-j>"] = "@function.outer",
-          },
-          swap_previous = {
-            ["<S-C-h>"] = "@parameter.inner",
-            ["<S-C-k>"] = "@function.outer",
           },
         },
       },
