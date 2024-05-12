@@ -3,12 +3,12 @@ require("lazy")
 return {
   { "nvim-lua/plenary.nvim", lazy = true },
   { "vim-scripts/loremipsum", cmd = "Loremipsum" },
-  { "RRethy/vim-illuminate", lazy = false },
-  { "b3nj5m1n/kommentary" }, -- TODO: lazy
+  { "RRethy/vim-illuminate", event = "BufEnter" },
+  { "b3nj5m1n/kommentary", event = "BufEnter" }, -- TODO: lazy
   { "tpope/vim-obsession", cmd = "Obsession" },
   {
     "tmillr/sos.nvim", -- auto-save on a timer
-    lazy = false,
+    event = "BufEnter",
     config = function()
       require("sos").setup() -- autostarts it
     end,
