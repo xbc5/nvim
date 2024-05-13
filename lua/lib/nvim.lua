@@ -56,4 +56,39 @@ function M.map(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, o)
 end
 
+-- Convert nvim log levels into an equivalent string
+function M.log_level(level)
+  if level == vim.log.levels.INFO then
+    return "INFO"
+  end
+  if level == vim.log.levels.WARN then
+    return "WARN"
+  end
+  if level == vim.log.levels.ERROR then
+    return "ERROR"
+  end
+  if level == vim.log.levels.TRACE then
+    return "TRACE"
+  end
+  if level == vim.log.levels.DEBUG then
+    return "DEBUG"
+  end
+  vim.notify("Unknown log level: " .. level, vim.log.levels.ERROR)
+end
+
+function M.new_notify(notify)
+  local fpath = require("lib.fs").notifications_log()
+  return function(msg, level)
+    local _msg = os.date("%Y-%m-%d %H:%M:%S|" .. M.log_level(level) .. "|") .. msg .. "\n"
+    local file = io.open(fpath, "a")
+    if not file then
+      notify("Could not open notifications log file", vim.log.levels.ERROR)
+      return
+    end
+    file:write(_msg)
+    file:close()
+    notify(_msg, level)
+  end
+end
+
 return M
