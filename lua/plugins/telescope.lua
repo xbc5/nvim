@@ -4,7 +4,7 @@ return {
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
     dependencies = {
-      { "nvim-telescope/telescope-project.nvim", event = "Telescope" },
+      { "nvim-telescope/telescope-project.nvim", cmd = "Telescope" },
       { "nvim-tree/nvim-web-devicons", event = "VeryLazy" },
       { "nvim-telescope/telescope-ui-select.nvim", event = "VeryLazy" },
     },
@@ -60,9 +60,11 @@ return {
       telescope.load_extension("ui-select")
       telescope.load_extension("project")
 
-      telescope.builtin.find_files({
-        find_command = { "rg", "--files", "--hidden", "-g", "!.git" },
-      })
+      LazyVim.on_load("telescope", function()
+        require("telescope").builtin.find_files({
+          find_command = { "rg", "--files", "--hidden", "-g", "!.git" },
+        })
+      end)
     end,
   },
 }
