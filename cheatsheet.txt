@@ -16,6 +16,14 @@ Move down [stack]                                           | <leader><M-d>
 Conditional breakpoint                                      | :BpCond 1 == 1
 Conditional breakpoint with extra args                      | :BpToggle "{cond}" "{max_hits}" "{log_msg}"
 
+## git-conflict @git @conflict
+Next conflict                                               | ]x
+Previous conflict                                           | [x
+Choose ours                                                 | co
+Choose theirs                                               | ct
+Choose none                                                 | cO
+Choose both                                                 | cb
+
 ## text-manipulation
 Toggle case (whole line)                                    | g~~
 Repeat a replace/substitute command for the entire buffer   | g&

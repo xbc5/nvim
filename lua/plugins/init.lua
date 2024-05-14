@@ -1,5 +1,10 @@
 require("lazy")
 
+--[[
+The plugin that allows one to jump via s<pat>, is called flash.nvim.
+  It also improves searching by adding labels etc.
+--]]
+
 return {
   { "nvim-lua/plenary.nvim", lazy = true },
   { "vim-scripts/loremipsum", cmd = "Loremipsum" },
