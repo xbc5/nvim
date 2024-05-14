@@ -1,9 +1,10 @@
+local map = require("lib.nvim").map
+
 return {
   {
     "kevinhwang91/rnvimr",
-    lazy = false,
-    config = function()
-      local map = vim.api.nvim_set_keymap
+    cmd = "RnvimrToggle", -- NOTE: see keymaps.lua for perm keymaps
+    init = function()
       local g = vim.api.nvim_set_var
 
       g("rnvimr_enable_ex", 1) -- replace buitin FM (Netrw)
@@ -12,11 +13,6 @@ return {
       -- border
       g("rnvimr_draw_border", 1)
       g("rnvimr_ranger_cmd", { "ranger", "--cmd=set draw_borders both" }) -- inner borders
-
-      -- keys
-      local opts = { silent = true, noremap = true }
-      map("n", "<A-o>", "<Cmd>RnvimrToggle<CR>", opts)
-      map("t", "<A-o>", "<Cmd>RnvimrToggle<CR>", opts)
 
       vim.cmd([[
       let g:rnvimr_layout = {

@@ -33,3 +33,7 @@ map("n", "<leader>opl", "<CMD>Octo pr list<CR>")
 map("n", "<leader>opc", "<CMD>Octo pr create<CR>")
 map("n", "<leader>opr", "<CMD>Octo pr checks<CR>")
 map("n", "<leader>os", "<CMD>Octo search<CR>")
+
+-- RnVimr: lazy loaded; requires perm keymaps
+map("n", "<A-o>", "<Cmd>RnvimrToggle<CR>")
+map("t", "<A-o>", "<Cmd>RnvimrToggle<CR>")
