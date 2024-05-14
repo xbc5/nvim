@@ -6,7 +6,6 @@ local map = require("lib.nvim").map
 -- define only +prefix menu items here; use desc in map for keymaps
 LazyVim.on_load("which-key.nvim", function()
   -- leader prefix
-  vim.notify("REGISTERING")
   require("which-key").register({
     o = { name = "octo" },
     O = { name = "options (:set)" },
