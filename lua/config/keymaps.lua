@@ -3,12 +3,22 @@
 -- Add any additional keymaps here
 local map = require("lib.nvim").map
 
+-- define only +prefix menu items here; use desc in map for keymaps
+LazyVim.on_load("which-key.nvim", function()
+  -- leader prefix
+  vim.notify("REGISTERING")
+  require("which-key").register({
+    O = { name = "options (:set)" },
+  }, { prefix = "<leader>" })
+end)
+
 -- generate a random tag string (for tests): e.g. #djU37w
 map("i", "<A-t>", '<C-o>:lua require("lib.util").insert_tag()<CR>', { desc = "Hash Tag Generator" })
 
-map("n", "<leader>sl", ":set list!<CR>", { desc = "Invisible Chars Toggle" })
-map("n", "<leader>ss", ":set spell!<CR>", { desc = "Spell Check Toggle" })
-map("n", "<leader>sw", ":set wrap!<CR>", { desc = "Line Wrap Toggle" })
+-- opts (O): only i and s are reserved for Octo (see below).
+map("n", "<leader>Ol", ":set list!<CR>", { desc = "Invisible Chars Toggle" })
+map("n", "<leader>Os", ":set spell!<CR>", { desc = "Spell Check Toggle" })
+map("n", "<leader>Ow", ":set wrap!<CR>", { desc = "Line Wrap Toggle" })
 
 -- delete all other buffers
 map("n", "<leader>bo", ":%bd|e#|bd#<CR>", { desc = "Buffer Only (delete all others)" })
@@ -32,7 +42,6 @@ map("n", "<leader>ois", "<CMD>Octo issue search<CR>")
 map("n", "<leader>opl", "<CMD>Octo pr list<CR>")
 map("n", "<leader>opc", "<CMD>Octo pr create<CR>")
 map("n", "<leader>opr", "<CMD>Octo pr checks<CR>")
-map("n", "<leader>os", "<CMD>Octo search<CR>")
 
 -- RnVimr: lazy loaded; requires perm keymaps
 map("n", "<A-o>", "<Cmd>RnvimrToggle<CR>")

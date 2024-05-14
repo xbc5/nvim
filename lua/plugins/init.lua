@@ -8,8 +8,9 @@ The plugin that allows one to jump via s<pat>, is called flash.nvim.
 return {
   { "nvim-lua/plenary.nvim", lazy = true },
   { "vim-scripts/loremipsum", cmd = "Loremipsum" },
+  { "folke/which-key.nvim", event = "VeryLazy" }, -- see keymaps.lua for register() keymaps
   { "RRethy/vim-illuminate", event = "BufEnter" },
-  { "b3nj5m1n/kommentary", event = "BufEnter" }, -- TODO: lazy
+  { "b3nj5m1n/kommentary", event = "BufEnter" },
   { "tpope/vim-obsession", cmd = "Obsession" },
   {
     "tmillr/sos.nvim", -- auto-save on a timer
