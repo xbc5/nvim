@@ -1,5 +1,3 @@
-local map = require("lib.nvim").map
-
 return {
   {
     "akinsho/git-conflict.nvim",
