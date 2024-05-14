@@ -8,6 +8,7 @@ LazyVim.on_load("which-key.nvim", function()
   -- leader prefix
   vim.notify("REGISTERING")
   require("which-key").register({
+    o = { name = "octo" },
     O = { name = "options (:set)" },
   }, { prefix = "<leader>" })
 end)
