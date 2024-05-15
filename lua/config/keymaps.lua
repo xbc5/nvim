@@ -7,6 +7,7 @@ local map = require("lib.nvim").map
 LazyVim.on_load("which-key.nvim", function()
   -- leader prefix
   require("which-key").register({
+    e = { name = "docs" },
     l = { name = "lsp" },
     o = { name = "octo" },
     O = { name = "options (:set)" },

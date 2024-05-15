@@ -1,30 +1,32 @@
--- Change the DAP keymaps via its 'keys' key, see: https://www.lazyvim.org/extras/dap/core
---
--- My old keys, for reference:
---
--- map("n", "<leader>ec", '<Cmd>lua require("dap").run_to_cursor()<CR>', opts)
--- map("n", "<leader>el", '<Cmd>lua require("dap").run_last()<CR>', opts)
--- map("n", "<leader>ed", '<Cmd>lua require("dap").disconnect()<CR>', opts)
--- map("n", "<leader>ex", '<Cmd>lua require("dap").close()<CR>', opts)
--- map("n", "<leader>ep", '<Cmd>lua require("dap").pause()<CR>', opts) -- can take thread ID
---
--- -- navigation
--- map("n", "<M-J>", '<Cmd>lua require("dap").continue()<CR>', opts) -- also starts session
--- map("n", "<M-K>", '<Cmd>lua require("dap").reverse_continue()<CR>', opts) -- back in time
--- map("n", "<M-k>", '<Cmd>lua require("dap").step_back()<CR>', opts) -- back 1 step
--- map("n", "<M-j>", '<Cmd>lua require("dap").step_over()<CR>', opts)
--- map("n", "<M-h>", '<Cmd>lua require("dap").step_out()<CR>', opts) -- out func
--- map("n", "<M-l>", '<Cmd>lua require("dap").step_into()<CR>', opts) -- in func
--- map("n", "<M-u>", '<Cmd>lua require("dap").up()<CR>', opts) -- up stack, no stepping
--- map("n", "<M-d>", '<Cmd>lua require("dap").down()<CR>', opts) -- down stack, not stepping
---
--- map("n", "<leader>eb", '<Cmd>lua require("dap").toggle_breakpoint()<CR>', opts)
--- map("n", "<leader>eB", '<Cmd>lua require("dap").clear_breakpoints()<CR>', opts)
---
--- map("n", "<leader>er", '<Cmd>lua require("dap").repl.toggle()<CR>', opts)
---
-
 return {
+  {
+    "mfussenegger/nvim-dap",
+    -- stylua: ignore
+    keys = {
+      { "<leader>dd", function() require("dap").disconnect() end, desc = "Disconnect (!exit)" },
+      { "<leader>dB", function() require("dap").clear_breakpoints() end, desc = "Clear Breakpoints" },
+
+      -- navigation
+      { "<M-J>", function() require("dap").continue() end, desc = "Continue" }, -- also starts session
+      { "<M-K>", function() require("dap").reverse_continue() end, desc = "Reverse Continue" }, -- back in time
+      { "<M-k>", function() require("dap").step_back() end, desc = "Step Back" }, -- back 1 step
+      { "<M-j>", function() require("dap").step_over() end, desc = "Step Over" },
+      { "<M-h>", function() require("dap").step_out() end, desc = "Step Out" }, -- out func
+      { "<M-l>", function() require("dap").step_into() end, desc = "Step Into" }, -- in func
+      { "<M-u>", function() require("dap").up() end, desc = "Up" }, -- up stack, no stepping
+      { "<M-d>", function() require("dap").down() end, desc = "Down" }, -- down stack, not stepping
+
+      -- we remaped these above
+      { "<leader>dc", false }, -- continue
+      { "<leader>db", false }, -- toggle_breakpoint
+      { "<leader>dO", false }, -- step_over
+      { "<leader>do", false }, -- steo_out
+      { "<leader>di", false }, -- step_into
+      { "<leader>dk", false }, -- up
+      { "<leader>dj", false }, -- down
+    },
+  },
+
   {
     -- Sets up adapters with reasonable defaults.
     -- You can modify the handlers via the handlers key:

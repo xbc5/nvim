@@ -18,6 +18,7 @@ return {
   },
 
   {
+    -- NOTE: some configurations are also merged from nvim-devdocs config.
     "nvim-treesitter/nvim-treesitter",
     opt = {
       sync_install = false,

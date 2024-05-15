@@ -53,6 +53,15 @@ end
 -- opt for its descriptions.
 function M.map(mode, lhs, rhs, opts)
   local o = tabl.merge({ noremap = true, silent = true }, opts or {})
+
+  -- mode can be a table of strings
+  if type(mode) == "table" then
+    for _, m in ipairs(mode) do
+      vim.api.nvim_set_keymap(m, lhs, rhs, o)
+    end
+    return
+  end
+
   vim.api.nvim_set_keymap(mode, lhs, rhs, o)
 end
 
