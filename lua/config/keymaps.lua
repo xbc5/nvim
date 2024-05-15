@@ -7,8 +7,10 @@ local map = require("lib.nvim").map
 LazyVim.on_load("which-key.nvim", function()
   -- leader prefix
   require("which-key").register({
+    l = { name = "lsp" },
     o = { name = "octo" },
     O = { name = "options (:set)" },
+    S = { name = "system" },
   }, { prefix = "<leader>" })
 end)
 
@@ -46,3 +48,23 @@ map("n", "<leader>opr", "<CMD>Octo pr checks<CR>")
 -- RnVimr: lazy loaded; requires perm keymaps
 map("n", "<A-o>", "<Cmd>RnvimrToggle<CR>")
 map("t", "<A-o>", "<Cmd>RnvimrToggle<CR>")
+
+-- Lazy
+-- remap to Sl, because I want 'l' for LSP
+vim.keymap.del("n", "<leader>l")
+map("n", "<leader>Sl", "<CMD>Lazy<CR>", { desc = "Lazy" }) -- system=>lazy
+
+-- LspSaga
+map("n", "<leader>la", "<cmd>Lspsaga code_action<cr>")
+map("n", "<leader>ld", "<cmd>Lspsaga hover_doc<cr>")
+map("n", "<leader>lf", "<cmd>Lspsaga finder tyd+def+ref+imp<cr>")
+map("n", "<leader>lp", "<cmd>Lspsaga peek_definition<cr>")
+map("n", "<leader>lr", "<cmd>Lspsaga rename<cr>")
+map("n", "<leader>lo", "<cmd>Lspsaga outline<cr>")
+map("n", "<leader>lb", "<cmd>Lspsaga show_buf_diagnostics<cr>")
+map("n", "<leader>lw", "<cmd>Lspsaga show_workspace_diagnostics ++float<cr>")
+map("n", "<leader>lx", "<cmd>Lspsaga show_cursor_diagnostics<cr>")
+map("n", "<leader>lci", "<cmd>Lspsaga incoming_calls<cr>")
+map("n", "<leader>lco", "<cmd>Lspsaga outgoing_calls<cr>")
+map("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<cr>", { desc = "Lspsaga Next Diagnostic" })
+map("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<cr>", { desc = "Lspsacat Prev Diagnostic" })
