@@ -2,6 +2,7 @@ local function cmp_config()
   local cmp = require("cmp")
   local ls = require("luasnip")
   local nvim = require("lib.nvim")
+  local neogen = nvim.try_require("neogen")
 
   local function exitInsert()
     vim.cmd("stopinsert")
@@ -38,7 +39,9 @@ local function cmp_config()
       end, { "i", "c", "s" }),
 
       ["<M-h>"] = cmp.mapping(function(fallback)
-        if ls.jumpable(-1) then
+        if neogen and neogen.jumpable() then
+          neogen.jump_prev()
+        elseif ls.jumpable(-1) then
           ls.jump(-1)
         elseif nvim.is_mode("i") then
           exitInsert()
@@ -48,7 +51,9 @@ local function cmp_config()
       end, { "i", "s" }),
 
       ["<M-l>"] = cmp.mapping(function(fallback)
-        if ls.jumpable(1) then
+        if neogen and neogen.jumpable() then
+          neogen.jump_next()
+        elseif ls.jumpable(1) then
           ls.jump(1)
         elseif nvim.is_mode("i") then
           exitInsert()
