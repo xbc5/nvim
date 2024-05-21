@@ -6,7 +6,7 @@ return {
       -- You must install markdown and markdown_inline parser for the mini display
       { "nvim-treesitter/nvim-treesitter" },
     },
-    cmd = "LspSaga",
+    cmd = "Lspsaga",
     config = function()
       require("lspsaga").setup({
         finder = { silent = true },
