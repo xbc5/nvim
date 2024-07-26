@@ -7,7 +7,7 @@ The plugin that allows one to jump via s<pat>, is called flash.nvim.
 
 return {
   { "nvim-lua/plenary.nvim", lazy = true },
-  { "nvim-neo-tree/neo-tree.nvim", enabled = false }, -- WARN: overrides DAP keymap 'e'
+  { "nvim-neo-tree/neo-tree.nvim" }, -- WARN: overrides DAP keymap 'e'
   { "vim-scripts/loremipsum", cmd = "Loremipsum" },
   { "folke/which-key.nvim", event = "VeryLazy" }, -- see keymaps.lua for register() keymaps
   { "RRethy/vim-illuminate", event = "BufEnter" },

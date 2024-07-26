@@ -18,7 +18,6 @@ return {
           "css-lsp",
 
           "bash-language-server",
-          "cmake-language-server",
           "rust-analyzer",
           "vim-language-server",
         },
