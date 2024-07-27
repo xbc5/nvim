@@ -11,3 +11,8 @@ vim.opt.listchars = {
   precedes = "«",
   extends = "»",
 }
+
+if vim.g.neovide then
+  vim.o.guifont = "Source Code Pro:h10"
+  vim.g.neovide_confirm_quit = true
+end
