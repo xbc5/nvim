@@ -23,6 +23,9 @@ return {
     opt = {
       sync_install = false,
       auto_install = true,
+      highlight = {
+        enable = false,
+      },
       -- nvim-treesitter-textobjects
       textobjects = {
         select = {

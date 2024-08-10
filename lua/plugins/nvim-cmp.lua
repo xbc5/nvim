@@ -86,21 +86,24 @@ local function cmp_config()
     sources = cmp.config.sources(
       -- order of importance, outer table is to facilitate this
       {
-        { name = "nvim_lsp_signature_help" },
+        { name = "nvim_lsp" },
         { name = "codeium" },
         { name = "luasnip" },
-        { name = "nvim_lsp" },
-        { name = "nvim_lua" },
       },
       {
         { name = "path" },
-        { name = "buffer", keyword_length = 5 },
       }
     ),
 
     completion = {
       completeopt = "menuone,preview,noselect,noinsert",
     },
+  })
+
+  cmp.setup.filetype("lua", {
+    sources = cmp.config.sources({
+      { name = "nvim_lua" },
+    }),
   })
 end
 
