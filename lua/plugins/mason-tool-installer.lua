@@ -14,6 +14,7 @@ return {
         ensure_installed = {
           "emmet-ls",
           "html-lsp",
+          "biome", -- js/ts formatter and linter
 
           "css-lsp",
 

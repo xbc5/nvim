@@ -38,6 +38,37 @@ function M.try_require(path)
   end
 end
 
+--- Import a module from the given path and return functions suitable for
+--- handling different responses. This just makes code more readable than
+--- endless if-else statements.
+--- The object has two methods: `ok` and `err`, which it calls depending
+--- on whether the module was imported successfully.
+---
+--- @param path string The path to the module to import.
+--- @return table A table with `ok` and `err` methods.
+--  Example:
+--    import("foo").ok(function() ... end).err(function() ... end)
+function M.import(path)
+  local status, module = pcall(require, path)
+  local r = {}
+
+  function r.ok(fn)
+    if status then
+      fn(module)
+    end
+    return r
+  end
+
+  function r.err(fn)
+    if not status then
+      fn()
+    end
+    return r
+  end
+
+  return r
+end
+
 function M.is_mode(mode)
   if vim.api.nvim_get_mode().mode == mode then
     return true
@@ -57,7 +88,7 @@ function M.map(mode, lhs, rhs, opts)
   -- mode can be a table of strings
   if type(mode) == "table" then
     for _, m in ipairs(mode) do
-      vim.api.nvim_set_keymap(m, lhs, rhs, o)
+      vim.keymap.set(m, lhs, rhs, o)
     end
     return
   end
