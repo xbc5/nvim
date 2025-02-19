@@ -3,6 +3,7 @@ local map = require("lib.nvim").map
 return {
   {
     "mrjones2014/smart-splits.nvim",
+    event = { "BufEnter" },
     config = function()
       require("smart-splits").setup({})
 

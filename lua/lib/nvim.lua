@@ -76,10 +76,6 @@ function M.is_mode(mode)
   return false
 end
 
-function M.pre_init()
-  vim.api.nvim_set_option("termguicolors", true) -- required for 16 bit terminals
-end
-
 -- Map with default opts. Remember that which-key reads the { desc = "" }
 -- opt for its descriptions.
 function M.map(mode, lhs, rhs, opts)
@@ -93,7 +89,8 @@ function M.map(mode, lhs, rhs, opts)
     return
   end
 
-  vim.api.nvim_set_keymap(mode, lhs, rhs, o)
+  -- rhs can be a fn or a string, so must use `keymap.set()` and not `nvim_set_keymap()`.
+  vim.keymap.set(mode, lhs, rhs, o)
 end
 
 -- Convert nvim log levels into an equivalent string

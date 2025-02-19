@@ -3,6 +3,7 @@ local map = require("lib.nvim").map
 return {
   {
     "j-hui/fidget.nvim",
+    lazy = false, -- We need this to run at startup.
     config = function()
       require("fidget").setup({
         notification = {

@@ -1,6 +1,7 @@
 return {
   {
     "lewis6991/gitsigns.nvim",
+    event = { "BufEnter" },
     opts = {
       current_line_blame = false, -- HUGE performance hog, laggy input
       on_attach = function(bufnr)
@@ -12,6 +13,7 @@ return {
           vim.keymap.set(mode, l, r, opts)
         end
 
+        -- Cannot map these to :Gtsigns next|preview_hunk becuase they don't work.
         map("n", "]c", function()
           if vim.wo.diff then
             return "]c"
@@ -31,23 +33,6 @@ return {
           end)
           return "<Ignore>"
         end, { expr = true })
-
-        -- Actions
-        map({ "n", "v" }, "<leader>gs", gs.stage_hunk)
-        map({ "n", "v" }, "<leader>gr", gs.reset_hunk)
-        map("n", "<leader>gS", gs.stage_buffer)
-        map("n", "<leader>gu", gs.undo_stage_hunk)
-        map("n", "<leader>gR", gs.reset_buffer)
-        map("n", "<leader>gp", gs.preview_hunk)
-        map("n", "<leader>gb", function()
-          gs.blame_line({ full = true })
-        end)
-        map("n", "<leader>gB", gs.toggle_current_line_blame)
-        map("n", "<leader>gd", gs.diffthis)
-        map("n", "<leader>gD", gs.toggle_deleted)
-
-        -- Text object
-        map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
       end,
     },
   },

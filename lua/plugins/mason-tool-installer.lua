@@ -12,12 +12,12 @@ return {
     config = function()
       require("mason-tool-installer").setup({
         ensure_installed = {
+          -- Web
           "emmet-ls",
           "html-lsp",
-          "biome", -- js/ts formatter and linter
-
           "css-lsp",
 
+          -- Other
           "bash-language-server",
           "rust-analyzer",
           "vim-language-server",

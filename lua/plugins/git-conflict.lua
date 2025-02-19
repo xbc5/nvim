@@ -2,6 +2,7 @@ return {
   {
     "akinsho/git-conflict.nvim",
     version = "*",
+    event = "BufEnter",
     config = function()
       require("git-conflict").setup({
         default_mappings = {
@@ -10,6 +11,5 @@ return {
         },
       })
     end,
-    event = "BufEnter",
   },
 }

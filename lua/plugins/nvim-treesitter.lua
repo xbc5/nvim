@@ -18,14 +18,10 @@ return {
   },
 
   {
-    -- NOTE: some configurations are also merged from nvim-devdocs config.
     "nvim-treesitter/nvim-treesitter",
-    opt = {
+    opts = {
       sync_install = false,
       auto_install = true,
-      highlight = {
-        enable = false,
-      },
       -- nvim-treesitter-textobjects
       textobjects = {
         select = {
