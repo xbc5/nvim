@@ -2,6 +2,14 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 local map = require("lib.nvim").map
+local safe_require = require("lib.nvim").safe_require
+
+-- MISC
+-------------------------------------------------------------------------------
+-- sort Python imports
+safe_require("lib.code", function(M)
+  map("n", "<leader>is", M.sort_imports, { desc = "sort imports" })
+end)
 
 -- UTILS
 -------------------------------------------------------------------------------

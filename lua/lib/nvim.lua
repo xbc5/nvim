@@ -14,6 +14,11 @@ local function notify(msg, level, once)
 end
 
 -- Send an error notification
+function M.dbg(msg, once)
+  notify(msg, vim.log.levels.DEBUG, once)
+end
+
+-- Send an error notification
 function M.err(msg, once)
   notify(msg, vim.log.levels.ERROR, once)
 end
@@ -35,6 +40,18 @@ function M.try_require(path)
   else
     M.err("Could not load module: " .. path, true)
     return nil
+  end
+end
+
+-- Load a module and inject it into `fn(module)` only upon successful load;
+-- otherwise send a debug notification.
+-- In other words: it won't raise an error if the module isn't found found.
+function M.safe_require(path, fn)
+  local status, module = pcall(require, path)
+  if status then
+    return fn(module)
+  else
+    M.dbg("module doesn't exist: '" .. path .. "'", true)
   end
 end
 
