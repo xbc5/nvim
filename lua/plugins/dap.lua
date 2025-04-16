@@ -34,13 +34,16 @@ return {
     "jay-babu/mason-nvim-dap.nvim",
     opts = {
       ensure_installed = {
-        -- Supported adapters: https://github.com/jay-babu/mason-nvim-dap.nvim/blob/main/lua/mason-nvim-dap/mappings/source.lua
-        "debugpy",
+        -- Go.
         "delve",
+        -- JS.
         "node-debug2-adapter",
         "chrome-debug-adapter",
         "firefox-debug-adapter",
         "js-debug-adapter",
+        -- Python.
+        "debugpy",
+        -- Shell.
         "bash-debug-adapter",
       },
     },
