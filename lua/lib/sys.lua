@@ -4,10 +4,12 @@ local M = {}
 
 function M.shell_cmd(cmd, PIPE)
   local pipe = const[PIPE] or "" -- always a string
-  if PIPE ~= nil then assert(const[PIPE], "Invalid pipe: "..PIPE) end  -- if provided
+  if PIPE ~= nil then
+    assert(const[PIPE], "Invalid pipe: " .. PIPE)
+  end -- if provided
 
-  local f = io.popen(cmd..pipe)
-  local s = f:read('*l')
+  local f = io.popen(cmd .. pipe)
+  local s = f:read("*l")
   f:close()
 
   return s
@@ -17,7 +19,7 @@ end
 -- but you must quote or escape the path if it has spaces.
 function M.ls(path)
   local i, t, popen = 0, {}, io.popen
-  local pfile = popen('ls -aA ' .. path)
+  local pfile = popen("ls -aA " .. path)
   for filename in pfile:lines() do
     i = i + 1
     t[i] = filename
@@ -27,7 +29,7 @@ function M.ls(path)
 end
 
 function M.cmd_exists(cmd)
-  return M.shell_cmd("which "..cmd, "NOERR") ~= nil
+  return M.shell_cmd("which " .. cmd, "NOERR") ~= nil
 end
 
 function M.is_user()
@@ -36,8 +38,13 @@ function M.is_user()
 end
 
 function M.file_exists(name)
-   local f=io.open(name,"r")
-   if f~=nil then io.close(f) return true else return false end
+  local f = io.open(name, "r")
+  if f ~= nil then
+    io.close(f)
+    return true
+  else
+    return false
+  end
 end
 
 function M.is_templatevm()
