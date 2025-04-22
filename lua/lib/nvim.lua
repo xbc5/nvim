@@ -44,14 +44,19 @@ function M.try_require(path)
 end
 
 -- Load a module and inject it into `fn(module)` only upon successful load;
--- otherwise send a debug notification.
+-- otherwise send a debug notification and return a default value.
 -- In other words: it won't raise an error if the module isn't found found.
-function M.safe_require(path, fn)
+-- @param path The module path to load.
+-- @param fn The function to execute if the module exists; it recieves the module table.
+-- For example, `fn(M) M.something() end`
+-- @param default The value to return if the module does not exist.
+function M.safe_require(path, fn, default)
   local status, module = pcall(require, path)
   if status then
     return fn(module)
   else
     M.dbg("module doesn't exist: '" .. path .. "'", true)
+    return default
   end
 end
 
