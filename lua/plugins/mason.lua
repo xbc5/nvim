@@ -50,7 +50,7 @@ return {
         "biome", -- TypeScript, JavaScript.
         "css-lsp",
         "emmet-ls",
-        "eslint-lsp",
+        -- "eslint-lsp", -- NEVER INSTALL THIS EVER AGAIN.
         "html-lsp",
         "js-debug-adapter",
         "prettierd",
