@@ -40,7 +40,6 @@ return {
         "debugpy",
         "pyright",
         "ruff",
-        "ruff-lsp",
 
         -- Shell.
         "bash-language-server",
