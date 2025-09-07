@@ -14,13 +14,6 @@ return {
   { "b3nj5m1n/kommentary", event = "BufEnter" },
   { "tpope/vim-obsession", cmd = "Obsession" },
   {
-    "tmillr/sos.nvim", -- auto-save on a timer
-    event = "BufEnter",
-    config = function()
-      require("sos").setup() -- autostarts it
-    end,
-  },
-  {
     "weirongxu/plantuml-previewer.vim",
     ft = { "plantuml", "puml" },
     cmd = { "PlantumlOpen", "PlantumlSave", "PlantumlStart", "PlantumlStop", "PlantumlToggle" },
