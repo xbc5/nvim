@@ -51,7 +51,32 @@ return {
   {
     "leoluz/nvim-dap-go",
     event = { "VeryLazy" },
-    config = function()
+    config = function(_, opts)
+      ----- PROJECT-SPECIFIC DEBUGGER ------------------------------------------
+      -- In some projects, the debugger setup is complex. For example, execution
+      -- through mise. This code will use a custom dlv script in .vscode/dlv if it
+      -- exists, otherwise it uses the default debugger (dlv).
+      --
+      -- Get the default path set by the configuration.
+      local debugger = vim.tbl_get(opts, "delve", "path") or "dlv"
+
+      -- Determine if the custom script exists, and use that if it does.
+      local dlv_wrapper_path = ".vscode/dlv"
+      if vim.uv.fs_stat(dlv_wrapper_path) then
+        debugger = dlv_wrapper_path
+      end
+
+      -- Override the default configuration.
+      opts = vim.tbl_deep_extend("force", opts, {
+        delve = {
+          path = debugger, -- Custom dlv script || default dlv.
+        },
+      })
+
+      ----- SETUP --------------------------------------------------------------
+      require("dap-go").setup(opts)
+
+      ----- COMMANDS -----------------------------------------------------------
       -- The LazyVim spec does not define a config function -- so it's safe to define this.
       vim.api.nvim_create_user_command("GoDebugTest", function()
         require("dap-go").debug_test()
