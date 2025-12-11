@@ -1,5 +1,18 @@
 return {
   {
+    "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        beancount = {
+          init_options = {
+            -- TODO(#86): Dynamically determine the main beancount file
+            journal_file = vim.fn.expand("~/ledger/beancount/main.beancount"),
+          },
+        },
+      },
+    },
+  },
+  {
     "nvimdev/lspsaga.nvim",
     dependencies = {
       { "nvim-tree/nvim-web-devicons" },
