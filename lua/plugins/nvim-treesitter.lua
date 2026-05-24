@@ -82,6 +82,7 @@ return {
       new_opts.ensure_installed = new_opts.ensure_installed or {}
       new_opts.ensure_installed = vim.list_extend(new_opts.ensure_installed, {
         "typst", -- For the Typst typsetting DSL.
+        "gotmpl", -- Go templates
       })
 
       return new_opts
