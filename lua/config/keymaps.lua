@@ -29,6 +29,7 @@ map("n", "J", "mzJ`z")
 -- replace visual selection with paste, sending the deletion to a void register.
 map("v", "<leader>p", "_dP", { desc = "Paste and replace selection" })
 map("n", "<leader>fC", ":Cheatsheet<CR>", { desc = "Cheatsheet Open" })
+map("n", "<leader>fs", ":FzfLua git_status<CR>", { desc = "Git Status (FzfLua)" })
 
 -- GIT SIGNS
 -------------------------------------------------------------------------------
