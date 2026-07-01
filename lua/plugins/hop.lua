@@ -1,6 +1,6 @@
 return {
   {
-    "phaazon/hop.nvim",
+    "smoka7/hop.nvim",
     event = "BufEnter",
     config = function()
       require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })

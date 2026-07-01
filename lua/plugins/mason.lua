@@ -1,6 +1,6 @@
 return {
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     opts = {
       -- I think ensure_installed is a LazyVim extension, due to this line in the full spec:
       -- `opts_extend = { "ensure_installed" }`

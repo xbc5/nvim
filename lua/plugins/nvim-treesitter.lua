@@ -10,7 +10,7 @@ return {
   {
     "mfussenegger/nvim-treehopper",
     event = { "BufEnter" },
-    dependencies = { "nvim-treesitter/nvim-treesitter", "phaazon/hop.nvim" },
+    dependencies = { "nvim-treesitter/nvim-treesitter", "smoka7/hop.nvim" },
     config = function()
       map("o", "m", ":lua require('tsht').nodes()<CR>", { noremap = false, desc = "Select Node with TSHT" })
       map("v", "m", ":lua require('tsht').nodes()<CR>", { desc = "Select Node with TSHT" })
