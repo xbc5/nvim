@@ -14,6 +14,26 @@ return {
           },
         },
 
+        -- _____ PYRIGHT _____
+        -- Prioritise pyright's own config, .git, or .jj over pyproject.toml. In a workspace,
+        -- pyright would otherwise anchor the root to a sub-package (marked by its pyproject.toml),
+        -- starting one client per package, each unable to resolve sibling (local) dependencies.
+        --
+        -- An example of pyrightconfig.json that resolves local packages. You may need this in
+        -- a monorepo:
+        -- {
+        -- "extraPaths": [
+        -- "packages/python/auth-lib",
+        -- "packages/python/models-lib"
+        -- ]
+        -- }
+        pyright = {
+          root_dir = function(fname)
+            return vim.fs.root(fname, { "pyrightconfig.json", ".git", ".jj" })
+              or vim.fs.root(fname, { "pyproject.toml", "setup.py", "setup.cfg", "Pipfile" })
+          end,
+        },
+
         -- Don't attach gopls to template files, because it competes with Treesitter's
         -- syntax highlighter and the colours disappear immediately.
         gopls = {
